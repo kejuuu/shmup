@@ -7,7 +7,7 @@ import javax.swing.*;
 
 import states.GameStateManager;
 
-public class GamePanel extends JPanel implements Runnable, /*KeyListener*/ MouseListener {
+public class GamePanel extends JPanel implements Runnable, KeyListener, MouseListener {
 
 	/**
 	 * 
@@ -41,8 +41,7 @@ public class GamePanel extends JPanel implements Runnable, /*KeyListener*/ Mouse
 		super.addNotify();
 		if (thread == null) {
 			thread = new Thread(this);
-			// addKeyListener(this);
-			addMouseListener(this);
+			addKeyListener(this);
 			thread.start();
 		}
 	}
@@ -75,6 +74,7 @@ public class GamePanel extends JPanel implements Runnable, /*KeyListener*/ Mouse
 			drawToScreen();
 			elapsed = System.nanoTime() - start;
 			wait = tpf - (elapsed / 1000000);
+			System.out.println(elapsed);
 			try {
 				if (wait < 1)
 					Thread.sleep(1);

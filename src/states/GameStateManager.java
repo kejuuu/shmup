@@ -27,11 +27,19 @@ public class GameStateManager {
 		states.get(currentState).draw(g);
 	}
 
-	public void keyPressed(int k) {
-		states.get(currentState).keyPressed(k);
+	// public void keyPressed(int k) {
+	// 	states.get(currentState).keyPressed(k);
+	// }
+
+	// public void keyReleased(int k) {
+	// 	states.get(currentState).keyReleased(k);
+	// }
+
+	public void mousePressed(int x, int y) {
+		states.get(currentState).mousePressed(x, y);
 	}
 
-	public void keyReleased(int k) {
-		states.get(currentState).keyReleased(k);
+	public void mouseReleased(int x, int y) {
+		states.get(currentState).mouseReleased(x, y);
 	}
 }

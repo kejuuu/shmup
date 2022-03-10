@@ -7,8 +7,6 @@ import java.awt.*;
 public class GameObject {
     public BufferedImage image;
     public Transform transform = new Transform();
-    public int width;
-    public int height;
 
     public GameObject(String path) {
         try {
@@ -16,11 +14,9 @@ public class GameObject {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        width = image.getWidth();
-        height = image.getHeight();
     }
 
     public void draw(Graphics2D g) {
-        g.drawImage(image, transform.positionX-width*3/2, transform.positionY - height*3/2, width*3, height*3, null);
+        g.drawImage(image, transform.positionX, transform.positionY, image.getWidth() * 3, image.getHeight()*3, null);
     }
 }

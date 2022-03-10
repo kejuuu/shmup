@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+E:\Code\Java\shmup\.metadata\.plugins\org.eclipse.jdt.core
+1067094681.index
+1991655398.index
+1238233520.index

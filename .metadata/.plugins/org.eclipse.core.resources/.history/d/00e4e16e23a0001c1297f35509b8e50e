@@ -1,0 +1,10 @@
+class Transform {
+    public int positionX;
+    public int positionY;
+
+    public void setPosition(int x, int y)
+    {
+        positionX = x;
+        positionY = y;
+    }
+}

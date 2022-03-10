@@ -1,0 +1,39 @@
+import java.awt.*;
+import java.awt.image.*;
+import javax.imageio.ImageIO;
+
+public class Level1 extends GameState {
+
+    private BufferedImage backgroundImage;
+    private double y = 0;
+
+    public Level1(GameStateManager gsm){
+        this.gsm = gsm;
+        try {
+            backgroundImage = ImageIO.read(getClass().getResource("Background/background.png"));
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void init() {
+    }
+
+    public void update() {
+        y += 50;
+    }
+
+    public void draw(Graphics2D g) {
+        g.drawImage(backgroundImage, 0, (int)y, null);
+    }
+
+    public void keyPressed(int k) {
+        
+    }
+    
+    public void keyReleased(int k) {
+        
+    }
+}

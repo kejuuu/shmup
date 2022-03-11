@@ -1,6 +1,5 @@
 package Characters;
 
-import java.awt.Rectangle;
 import utils.GameObject;
 
 public class PlayerBullet extends GameObject{

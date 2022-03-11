@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="../resources"/>
+	<classpathentry kind="lib" path="/resources"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

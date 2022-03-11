@@ -3,6 +3,7 @@ package utils;
 import java.awt.image.*;
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 public class GameObject {
     public BufferedImage image;
@@ -21,6 +22,14 @@ public class GameObject {
     }
 
     public void draw(Graphics2D g) {
-        g.drawImage(image, transform.positionX-width*3/2, transform.positionY - height*3/2, width*3, height*3, null);
+
+        double rotationRequired = Math.toRadians (transform.rotation);
+        double locationX = image.getWidth() / 2;
+        double locationY = image.getHeight() / 2;
+
+        AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
+        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+
+        g.drawImage(op.filter(image, null), transform.positionX-width*3/2, transform.positionY - height*3/2, width*3, height*3, null);
     }
 }

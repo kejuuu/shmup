@@ -17,6 +17,7 @@ public class Level1 extends GameState {
 
     private Background background;
     private GameObject player;
+    private GameObject enemy;
 
     private boolean isFiring = false;
     private double fireRate = 0.1;
@@ -28,8 +29,11 @@ public class Level1 extends GameState {
 
         background = new Background("/Background/background.png", 1);
         player = new GameObject("/Ships/ship_0000.png");
+        enemy = new GameObject("/Ships/ship_0023.png");
 
         player.transform.setPosition(GamePanel.SCREEN_WIDTH / 2 - player.image.getWidth() / 2, 960);  
+        enemy.transform.setPosition(GamePanel.SCREEN_WIDTH / 2 - enemy.image.getWidth() / 2, 200);
+        enemy.transform.setRotation(180);
     }
 
     public void update() {
@@ -66,6 +70,7 @@ public class Level1 extends GameState {
     public void draw(Graphics2D g) {
         background.draw(g);
         player.draw(g);
+        enemy.draw(g);
         for(int i=0;i<playerBullets.size();i++) {
             playerBullets.get(i).draw(g);
         }

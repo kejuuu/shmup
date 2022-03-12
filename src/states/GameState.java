@@ -1,6 +1,7 @@
 package states;
 
-public abstract class GameState {
+public abstract class GameState
+{
 	protected GameStateManager gsm;
 
 	public abstract void update();

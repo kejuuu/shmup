@@ -13,6 +13,7 @@ import states.GameState;
 import states.GameStateManager;
 import utils.Background;
 import utils.GameObject;
+import utils.constants;
 
 public class Level1 extends GameState
 {
@@ -31,9 +32,9 @@ public class Level1 extends GameState
     {
         this.gsm = gsm;
 
-        background = new Background("/Background/background.png", 1);
-        player = new GameObject("/Ships/ship_0000.png");
-        enemy = new Enemy("/Ships/ship_0023.png", 5);
+        background = new Background(constants.BACKGROUND, 1);
+        player = new GameObject(constants.PLAYER);
+        enemy = new Enemy(constants.ENEMY1, 5);
 
         player.transform.setPosition(GamePanel.SCREEN_WIDTH / 2 - player.image.getWidth() / 2, 960);
         enemy.transform.setPosition(GamePanel.SCREEN_WIDTH / 2 - enemy.image.getWidth() / 2, 200);
@@ -67,14 +68,18 @@ public class Level1 extends GameState
             if (playerBullets.size() > 0)
             {
                 playerBullets.get(i).update(enemies);
-
+                if (playerBullets.get(i).hasCollidedWithEnemy)
+                {
+                    if (playerBullets.size() > 0)
+                        playerBullets.remove(i);
+                }
             }
         }
     }
 
     public void firePlayerBullet()
     {
-        PlayerBullet instance = new PlayerBullet("/Tiles/tile_0000.png", 10);
+        PlayerBullet instance = new PlayerBullet(constants.PLAYER_BULLET, 10);
         instance.transform.setPosition(
                 player.transform.positionX + player.image.getWidth() / 2 - instance.image.getWidth() / 2,
                 player.transform.positionY - instance.image.getHeight());
@@ -84,12 +89,20 @@ public class Level1 extends GameState
     public void draw(Graphics2D g)
     {
         background.draw(g);
-        player.draw(g);
-        enemy.draw(g);
         for (int i = 0; i < playerBullets.size(); i++)
         {
             playerBullets.get(i).draw(g);
         }
+        player.draw(g);
+        for (int i = 0; i < enemies.size(); i++)
+        {
+            if (enemies.get(i).health <= 0)
+            {
+                if (enemies.size() > 0)
+                    enemies.remove(i);
+            }
+        }
+
     }
 
     public void mousePressed(int x, int y)

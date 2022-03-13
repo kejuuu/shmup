@@ -8,10 +8,12 @@ import java.awt.geom.AffineTransform;
 public class GameObject
 {
     public BufferedImage image;
-    private String imagePath;
     public Transform transform = new Transform();
     public int width;
     public int height;
+    
+    private String imagePath;
+
 
     public GameObject(String path) 
     {
@@ -39,6 +41,11 @@ public class GameObject
 
         g.drawImage(op.filter(image, null), transform.positionX - width * 3 / 2, transform.positionY - height * 3 / 2,
                 width * 3, height * 3, null);
+
+                
+        // ? Debug collision box
+        g.setColor(Color.RED);
+        g.drawRect(transform.positionX - width * 3 / 2, transform.positionY - height * 3 / 2, width * 3, height * 3);
     }
 
     public String getInfo()

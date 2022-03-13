@@ -4,9 +4,10 @@ import utils.GameObject;
 
 public class Enemy extends GameObject
 {
-    int health = 5;
+    public int health = 5;
 
-    public Enemy(String path, int health) {
+    public Enemy(String path, int health) 
+    {
         super(path);
         this.health = health;
     }

@@ -7,6 +7,7 @@ import utils.GameObject;
 public class PlayerBullet extends GameObject
 {
     public int speed;
+    public boolean hasCollidedWithEnemy = false;
 
     public PlayerBullet(String path, int speed) 
     {
@@ -23,8 +24,9 @@ public class PlayerBullet extends GameObject
             if (Collision.checkCollision(this, enemy))
             {
                 enemy.onCollide();
+                hasCollidedWithEnemy = true;
             }
         }
-
     }
+
 }

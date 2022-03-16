@@ -43,10 +43,11 @@ public abstract class GameObject
         g.drawImage(op.filter(image, null), transform.positionX - width * 3 / 2, transform.positionY - height * 3 / 2,
                 width * 3, height * 3, null);
 
-                
-        // ? Debug collision box
-        g.setColor(Color.RED);
-        g.drawRect(transform.positionX - width * 3 / 2, transform.positionY - height * 3 / 2, width * 3, height * 3);
+        if(constants.DEBUG)
+        {
+            g.setColor(Color.RED);
+            g.drawRect(transform.positionX - width * 3 / 2, transform.positionY - height * 3 / 2, width * 3, height * 3);
+        }
     }
 
     public void destroy(GameObject object)

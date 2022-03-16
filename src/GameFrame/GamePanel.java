@@ -21,8 +21,13 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 
 	private Thread thread;
 	private boolean running;
-	private int FPS = 60;
-	private long tpf = 1000 / FPS;
+	private static int FPS = 60;
+	private static long tpf = 1000 / FPS;
+	public static long deltaTime()
+	{
+		return tpf;
+	}
+	
 
 	private BufferedImage image;
 	private Graphics2D g;
@@ -142,5 +147,7 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 	public void mouseClicked(MouseEvent m)
 	{
 	}
+
+
 
 }

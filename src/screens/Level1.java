@@ -18,7 +18,7 @@ public class Level1 extends GameState
     private Enemy enemy2;
 
     private boolean isFiring = false;
-    private double fireRate = 0.1;
+    private double fireRate = constants.PLAYER_FIRE_RATE; // in milliseconds
 
     public Level1(GameStateManager gsm) 
     {
@@ -31,9 +31,7 @@ public class Level1 extends GameState
         
         player.transform.setPosition(GamePanel.SCREEN_WIDTH / 2 - player.image.getWidth() / 2, 960);
         enemy.transform.setPosition(GamePanel.SCREEN_WIDTH / 2 - enemy.image.getWidth() / 2, 200);
-        enemy.transform.setRotation(180); 
         enemy2.transform.setPosition(600, 200);
-        enemy2.transform.setRotation(180);
     }
 
     public void update()
@@ -43,11 +41,11 @@ public class Level1 extends GameState
         
         if (isFiring)
         {
-            fireRate -= 0.01;
+            fireRate -= GamePanel.deltaTime();
             if (fireRate <= 0)
             {
                 firePlayerBullet();
-                fireRate = 0.1;
+                fireRate = constants.PLAYER_FIRE_RATE;
             }
         }
     }

@@ -8,6 +8,7 @@ public class Enemy extends Collidable
     public Enemy(String path, int health) 
     {
         super(path);
+        this.transform.rotation = 180;
         this.health = health;
     }
 
@@ -16,7 +17,6 @@ public class Enemy extends Collidable
     {
         if(collider.equals("PlayerBullet"))
         {
-            System.out.println(health);
             health--;
             if(health <= 0)
             {

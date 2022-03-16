@@ -13,7 +13,6 @@ public class Collision
 
         if (ra.intersects(rb))
         {
-            System.out.println(a.getInfo() + " collides with " + b.getInfo());
             return true;
         }
         return false;

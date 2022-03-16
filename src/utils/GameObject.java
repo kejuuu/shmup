@@ -5,12 +5,12 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 
-public class GameObject
+public abstract class GameObject
 {
     public BufferedImage image;
     public Transform transform = new Transform();
-    public int width;
-    public int height;
+    private int width;
+    private int height;
     
     private String imagePath;
 
@@ -27,11 +27,12 @@ public class GameObject
         width = image.getWidth();
         height = image.getHeight();
         imagePath = path;
+
+        data.drawable.add(this);
     }
 
     public void draw(Graphics2D g)
     {
-
         double rotationRequired = Math.toRadians(transform.rotation);
         double locationX = image.getWidth() / 2;
         double locationY = image.getHeight() / 2;
@@ -48,8 +49,19 @@ public class GameObject
         g.drawRect(transform.positionX - width * 3 / 2, transform.positionY - height * 3 / 2, width * 3, height * 3);
     }
 
+    public void destroy(GameObject object)
+    {
+        if(data.drawable.contains(object))
+            data.drawable.remove(object);
+        
+        if(data.collideObject.contains(object) && object instanceof Collidable)
+            data.collideObject.remove(object);
+    }
+
     public String getInfo()
     {
         return imagePath;
     }
+
+    public abstract void update();
 }

@@ -1,8 +1,7 @@
 package Characters;
+import utils.Collidable;
 
-import utils.GameObject;
-
-public class Enemy extends GameObject
+public class Enemy extends Collidable
 {
     public int health = 5;
 
@@ -12,8 +11,17 @@ public class Enemy extends GameObject
         this.health = health;
     }
 
-    public void onCollide()
+    @Override
+    public void onCollide(String collider)
     {
-        health--;
+        if(collider.equals("PlayerBullet"))
+        {
+            System.out.println(health);
+            health--;
+            if(health <= 0)
+            {
+                destroy(this);
+            }
+        }
     }
 }

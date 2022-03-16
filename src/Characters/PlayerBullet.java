@@ -1,13 +1,11 @@
 package Characters;
 
-import java.util.List;
-import utils.Collision;
-import utils.GameObject;
+import utils.Collidable;
+// import java.util.List;
 
-public class PlayerBullet extends GameObject
+public class PlayerBullet extends Collidable
 {
     public int speed;
-    public boolean hasCollidedWithEnemy = false;
 
     public PlayerBullet(String path, int speed) 
     {
@@ -15,18 +13,19 @@ public class PlayerBullet extends GameObject
         this.speed = speed;
     }
 
-    public void update(List<Enemy> enemies)
+    public void update()
     {
+        super.update();
         transform.positionY -= speed;
-        // check collision with class enemy
-        for (Enemy enemy : enemies)
-        {
-            if (Collision.checkCollision(this, enemy))
-            {
-                enemy.onCollide();
-                hasCollidedWithEnemy = true;
-            }
-        }
+        
+        if(transform.positionY < 0)
+            destroy(this);
+    }
+
+    @Override
+    public void onCollide(String collider)
+    {
+        destroy(this);
     }
 
 }

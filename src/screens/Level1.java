@@ -1,5 +1,6 @@
 package screens;
 import java.awt.*;
+
 import Characters.Player;
 import Characters.PlayerBullet;
 import Characters.Spawner;
@@ -31,12 +32,16 @@ public class Level1 extends GameState
         
 
         new HeartGUI(constants.PLAYER);
+
     }
 
     public void update()
     {
         for (int i=0; i<data.drawable.size(); i++)
             data.drawable.get(i).update();
+        
+        for (int i=0; i<data.animatedSprite.size(); i++)
+            data.animatedSprite.get(i).update();
         
         if (isFiring)
         {
@@ -61,6 +66,9 @@ public class Level1 extends GameState
     {
         for (int i = 0; i < data.drawable.size(); i++)
             data.drawable.get(i).draw(g);
+        
+        for (int i = 0; i < data.animatedSprite.size(); i++)
+            data.animatedSprite.get(i).draw(g);
     }
 
     public void mousePressed(int x, int y)

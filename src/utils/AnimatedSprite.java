@@ -1,10 +1,9 @@
-package Characters;
+package utils;
 
 import java.awt.Graphics2D;
 import java.util.*;
 import javax.imageio.ImageIO;
-import utils.Transform;
-import utils.data;
+
 import java.awt.image.*;
 import java.awt.geom.AffineTransform;
 
@@ -12,22 +11,31 @@ public class AnimatedSprite
 {
     private int currentFrame = 0;
     private int frameCount = 0;
-    private Transform transform = new Transform();
+    public Transform transform = new Transform();
     private int width;
     private int height;
     private List<BufferedImage> frames = new ArrayList<BufferedImage>();
 
-    public AnimatedSprite(String[] path, int frameCount, Transform transform) {
-        for (int i = 0; i < path.length; i++)
+    public AnimatedSprite(String spriteName, String[] spritePaths, int frameCount, Transform transform) {
+        if (!data.cachedAnimatedSprite.containsKey(spriteName))
         {
-            try
+            for (int i = 0; i < spritePaths.length; i++)
             {
-                frames.add(ImageIO.read(getClass().getResource(path[i])));
-            } catch (Exception e)
-            {
-                e.printStackTrace();
+                try
+                {
+                    frames.add(ImageIO.read(getClass().getResource(spritePaths[i])));
+                } catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
             }
+            data.cachedAnimatedSprite.put(spriteName, frames);
+        } 
+        else
+        {
+            frames = data.cachedAnimatedSprite.get(spriteName);
         }
+
         this.frameCount = frameCount;
         this.transform = transform;
         width = frames.get(0).getWidth();
@@ -39,8 +47,7 @@ public class AnimatedSprite
     {
         currentFrame++;
         if (currentFrame >= frameCount)
-            currentFrame = 0;
-            // data.animatedSprite.remove(this);
+            data.animatedSprite.remove(this);
     }
 
     public void draw(Graphics2D g)
@@ -50,10 +57,10 @@ public class AnimatedSprite
         double locationY = frames.get(0).getHeight() / 2;
 
         AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
-        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
 
-        g.drawImage(op.filter(frames.get(currentFrame), null), transform.positionX - width * 3 / 2, transform.positionY - height * 3 / 2,
-                width * 3, height * 3, null);
+        g.drawImage(op.filter(frames.get(currentFrame), null), transform.positionX - width * 3 / 2,
+                transform.positionY - height * 3 / 2, width * 3, height * 3, null);
     }
 
 }

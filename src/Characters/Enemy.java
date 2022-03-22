@@ -2,30 +2,33 @@ package Characters;
 import GameFrame.GamePanel;
 import utils.Collidable;
 import utils.constants;
+import utils.data;
 
 public class Enemy extends Collidable
 {
     public int health = 5;
-    private double fireRate = constants.ENEMY1_FIRE_RATE; // in milliseconds
+    private double fireRate = data.ENEMY1_FIRE_RATE; // in milliseconds
+    public float speed;
 
     public Enemy(String path, int health) 
     {
         super(path);
         this.transform.rotation = 180;
         this.health = health;
+        this.speed = 1;
     }
 
     @Override
     public void update()
     {
         super.update();
-        transform.positionY += 1;
+        transform.positionY += speed;
 
         fireRate -= GamePanel.deltaTime();
         if (fireRate <= 0)
         {
             fireBullet();
-            fireRate = constants.ENEMY1_FIRE_RATE;
+            fireRate = data.ENEMY1_FIRE_RATE;
         }
     }
 
@@ -36,6 +39,7 @@ public class Enemy extends Collidable
                 transform.positionX + image.getWidth() / 2 - instance.image.getWidth() / 2,
                 transform.positionY - instance.image.getHeight());
         instance.transform.rotation = 180;
+        instance.speed = (int)(this.speed + 8);
     }
 
     @Override

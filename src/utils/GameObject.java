@@ -9,10 +9,10 @@ public abstract class GameObject
 {
     public BufferedImage image;
     public Transform transform = new Transform();
-    private int width;
-    private int height;
+    protected int width;
+    protected int height;
     
-    private String imagePath;
+    protected String imagePath;
 
 
     public GameObject(String path) 
@@ -43,11 +43,6 @@ public abstract class GameObject
         g.drawImage(op.filter(image, null), transform.positionX - width * 3 / 2, transform.positionY - height * 3 / 2,
                 width * 3, height * 3, null);
 
-        if(constants.DEBUG)
-        {
-            g.setColor(Color.RED);
-            g.drawRect(transform.positionX - width * 3 / 2, transform.positionY - height * 3 / 2, width * 3, height * 3);
-        }
     }
 
     public void destroy(GameObject object)
@@ -62,6 +57,16 @@ public abstract class GameObject
     public String getInfo()
     {
         return imagePath;
+    }
+
+    public static GameObject find(String className)
+    {
+        for(int i=0;i<data.drawable.size();i++)
+        {
+            if(data.drawable.get(i).getClass().getSimpleName().equals(className))
+                return data.drawable.get(i);
+        }
+        return null;
     }
 
     public abstract void update();

@@ -1,24 +1,23 @@
 package screens;
 import java.awt.*;
-import Characters.Enemy;
 import Characters.Player;
 import Characters.PlayerBullet;
+import Characters.Spawner;
+import GUI.HeartGUI;
 import GameFrame.GamePanel;
 import states.GameState;
 import states.GameStateManager;
 import utils.Background;
-import utils.GameObject;
 import utils.constants;
 import utils.data;
 
 public class Level1 extends GameState
 {
-    private GameObject player;
-    private Enemy enemy;
-    private Enemy enemy2;
+    private Player player;
 
     private boolean isFiring = false;
-    private double fireRate = constants.PLAYER_FIRE_RATE; // in milliseconds
+    private double fireRate = data.PLAYER_FIRE_RATE; // in milliseconds
+
 
     public Level1(GameStateManager gsm) 
     {
@@ -26,12 +25,12 @@ public class Level1 extends GameState
 
         new Background(constants.BACKGROUND, 1);
         player = new Player(constants.PLAYER, 5);
-        enemy = new Enemy(constants.ENEMY1, 5);
-        enemy2 = new Enemy(constants.ENEMY1, 5);
-        
+        new Spawner(3000);
+
         player.transform.setPosition(GamePanel.SCREEN_WIDTH / 2 - player.image.getWidth() / 2, 960);
-        enemy.transform.setPosition(GamePanel.SCREEN_WIDTH / 2 - enemy.image.getWidth() / 2, 200);
-        enemy2.transform.setPosition(600, 200);
+        
+
+        new HeartGUI(constants.PLAYER);
     }
 
     public void update()
@@ -45,7 +44,7 @@ public class Level1 extends GameState
             if (fireRate <= 0)
             {
                 firePlayerBullet();
-                fireRate = constants.PLAYER_FIRE_RATE;
+                fireRate = data.PLAYER_FIRE_RATE;
             }
         }
     }

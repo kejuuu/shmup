@@ -1,9 +1,9 @@
 package Characters;
 
-import utils.GameObject;
+import utils.Collidable;
 import java.awt.MouseInfo;
 
-public class Player extends GameObject
+public class Player extends Collidable
 {
     public int health = 5;
 
@@ -13,10 +13,23 @@ public class Player extends GameObject
         this.health = health;
     }
 
-    @Override
     public void update()
     {
+        super.update();
         transform.setPosition(MouseInfo.getPointerInfo().getLocation().x, MouseInfo.getPointerInfo().getLocation().y);
+    }
+
+    @Override
+    public void onCollide(String collider)
+    {
+        if(collider.equals("EnemyBullet"))
+        {
+            health--;
+            if(health <= 0)
+            {
+                destroy(this);
+            }
+        }
     }
 
 }

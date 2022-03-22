@@ -1,5 +1,8 @@
 package utils;
 
+import java.awt.*;
+
+
 public abstract class Collidable extends GameObject {
 
     public Collidable(String path)
@@ -20,6 +23,20 @@ public abstract class Collidable extends GameObject {
                 onCollide(data.collideObject.get(i).getClass().getSimpleName());
             }
         }  
+    }
+
+    @Override
+    public void draw(Graphics2D g)
+    {
+        super.draw(g);
+
+        if(constants.DEBUG)
+        {
+            g.setColor(Color.blue);
+            g.drawRect(transform.positionX - width * 3 / 2, transform.positionY - height * 3 / 2, width * 3, height * 3);
+            g.drawString(getInfo(), transform.positionX - width * 3/2, transform.positionY + height*3);
+            g.setColor(Color.black);
+        }
     }
 
     public abstract void onCollide(String collider);

@@ -3,6 +3,7 @@ import java.awt.*;
 
 import Characters.Player;
 import Characters.PlayerBullet;
+import Characters.ShootParticle;
 import Characters.Spawner;
 import GUI.HeartGUI;
 import GameFrame.GamePanel;
@@ -23,16 +24,13 @@ public class Level1 extends GameState
     public Level1(GameStateManager gsm) 
     {
         this.gsm = gsm;
-
-        new Background(constants.BACKGROUND, 1);
-        player = new Player(constants.PLAYER, 5);
-        new Spawner(3000);
-
-        player.transform.setPosition(GamePanel.SCREEN_WIDTH / 2 - player.image.getWidth() / 2, 960);
         
-
+        new Background(constants.BACKGROUND, 1);
+        new Spawner(3000);
+        new ShootParticle();
+        player = new Player(constants.PLAYER, 5);
+        player.transform.setPosition(GamePanel.SCREEN_WIDTH / 2 - player.image.getWidth() / 2, 960);
         new HeartGUI(constants.PLAYER);
-
     }
 
     public void update()

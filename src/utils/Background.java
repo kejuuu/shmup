@@ -12,7 +12,6 @@ public class Background extends GameObject
     {
         super(path);
         this.scrollSpeed = scrollSpeed;
-        data.drawable.add(this);
     }
 
     @Override

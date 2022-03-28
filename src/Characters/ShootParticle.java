@@ -6,7 +6,8 @@ import utils.constants;
 
 public class ShootParticle extends AnimatedSprite
 {
-    public ShootParticle() {
-        super("shootParticle", constants.SHOOT_PARTICLE, 31, new Transform());
+    public ShootParticle(Transform transform) 
+    {   
+        super("shootParticle", constants.SHOOT_PARTICLE, 31, transform);
     }
 }

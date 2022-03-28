@@ -40,14 +40,14 @@ public class AnimatedSprite
         this.transform = transform;
         width = frames.get(0).getWidth();
         height = frames.get(0).getHeight();
-        data.animatedSprite.add(this);
+        data.gameAnimatedSprites.add(this);
     }
 
     public void update()
     {
         currentFrame++;
         if (currentFrame >= frameCount)
-            data.animatedSprite.remove(this);
+            data.gameAnimatedSprites.remove(this);
     }
 
     public void draw(Graphics2D g)

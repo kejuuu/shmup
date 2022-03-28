@@ -8,19 +8,19 @@ public abstract class Collidable extends GameObject {
     public Collidable(String path)
     {
         super(path);
-        data.collideObject.add(this);
+        data.gameCollidables.add(this);
     }
 
     @Override
     public void update()
     {
-        for(int i=0;i<data.collideObject.size();i++)
+        for(int i=0;i<data.gameCollidables.size();i++)
         {
-            if(data.collideObject.get(i) == this)
+            if(data.gameCollidables.get(i) == this)
                 continue;
-            if(Collision.checkCollision(this, data.collideObject.get(i)))
+            if(Collision.checkCollision(this, data.gameCollidables.get(i)))
             {
-                onCollide(data.collideObject.get(i).getClass().getSimpleName());
+                onCollide(data.gameCollidables.get(i).getClass().getSimpleName());
             }
         }  
     }

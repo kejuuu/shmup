@@ -2,6 +2,7 @@ package states;
 
 import java.util.ArrayList;
 import screens.Level1;
+import screens.Menu;
 
 public class GameStateManager
 {
@@ -18,7 +19,13 @@ public class GameStateManager
 		states = new ArrayList<GameState>();
 
 		currentState = MENU;
+		states.add(new Menu(this));
 		states.add(new Level1(this));
+	}
+
+	public void changeState(int state) 
+	{
+		currentState = state;
 	}
 
 	public void update()

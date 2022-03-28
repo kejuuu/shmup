@@ -28,7 +28,7 @@ public abstract class GameObject
         height = image.getHeight();
         imagePath = path;
 
-        data.drawable.add(this);
+        data.gameDrawable.add(this);
     }
 
     public void draw(Graphics2D g)
@@ -47,11 +47,11 @@ public abstract class GameObject
 
     public void destroy(GameObject object)
     {
-        if(data.drawable.contains(object))
-            data.drawable.remove(object);
+        if(data.gameDrawable.contains(object))
+            data.gameDrawable.remove(object);
         
-        if(data.collideObject.contains(object) && object instanceof Collidable)
-            data.collideObject.remove(object);
+        if(data.gameCollidables.contains(object) && object instanceof Collidable)
+            data.gameCollidables.remove(object);
     }
 
     public String getInfo()
@@ -61,10 +61,10 @@ public abstract class GameObject
 
     public static GameObject find(String className)
     {
-        for(int i=0;i<data.drawable.size();i++)
+        for(int i=0;i<data.gameDrawable.size();i++)
         {
-            if(data.drawable.get(i).getClass().getSimpleName().equals(className))
-                return data.drawable.get(i);
+            if(data.gameDrawable.get(i).getClass().getSimpleName().equals(className))
+                return data.gameDrawable.get(i);
         }
         return null;
     }

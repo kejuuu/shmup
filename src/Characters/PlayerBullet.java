@@ -1,6 +1,5 @@
 package Characters;
 
-import java.util.Random;
 
 
 public class PlayerBullet extends Bullet
@@ -23,9 +22,6 @@ public class PlayerBullet extends Bullet
         if (collider.equals("Enemy"))
         {
             destroy(this);
-            ShootParticle destroyParticle = new ShootParticle();
-            destroyParticle.transform = this.transform;
-            destroyParticle.transform.rotation = new Random().nextInt(360);
         }
     }
 }

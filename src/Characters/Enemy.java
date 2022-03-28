@@ -3,6 +3,8 @@ import GameFrame.GamePanel;
 import utils.Collidable;
 import utils.constants;
 import utils.data;
+import java.util.Random;
+
 
 public class Enemy extends Collidable
 {
@@ -48,6 +50,9 @@ public class Enemy extends Collidable
         if(collider.equals("PlayerBullet"))
         {
             health--;
+            
+            ShootParticle destroyParticle = new ShootParticle(this.transform);
+            destroyParticle.transform.rotation = new Random().nextInt(360);
             if(health <= 0)
             {
                 destroy(this);

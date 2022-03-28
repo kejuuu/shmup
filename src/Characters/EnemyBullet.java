@@ -2,7 +2,7 @@ package Characters;
 
 public class EnemyBullet extends Bullet{
     public EnemyBullet(String path, int speed) {
-        super(path, speed);
+        super(path, speed, 2);
     }
 
     @Override

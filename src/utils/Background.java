@@ -10,7 +10,7 @@ public class Background extends GameObject
 
     public Background(String path, int scrollSpeed) 
     {
-        super(path);
+        super(path, -99);
         this.scrollSpeed = scrollSpeed;
     }
 

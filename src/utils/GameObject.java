@@ -11,11 +11,12 @@ public abstract class GameObject
     public Transform transform = new Transform();
     protected int width;
     protected int height;
+    public int zIndex;
     
     protected String imagePath;
 
 
-    public GameObject(String path) 
+    public GameObject(String path, int zIndex) 
     {
         try
         {
@@ -27,8 +28,9 @@ public abstract class GameObject
         width = image.getWidth();
         height = image.getHeight();
         imagePath = path;
+        this.zIndex = zIndex;
 
-        data.gameDrawable.add(this);
+        data.addObject(this);
     }
 
     public void draw(Graphics2D g)

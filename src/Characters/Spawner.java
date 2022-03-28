@@ -16,7 +16,7 @@ public class Spawner extends GameObject{
         private int spawnedEnemy = 0;
         
         public Spawner(float spawnRate) {
-            super(constants.EMPTY);
+            super(constants.EMPTY, -99);
             this.spawnRate = spawnRate; // in milliseconds
             Random rng = new Random();
         }

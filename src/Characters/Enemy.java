@@ -14,7 +14,7 @@ public class Enemy extends Collidable
 
     public Enemy(String path, int health) 
     {
-        super(path);
+        super(path, 3);
         this.transform.rotation = 180;
         this.health = health;
         this.speed = 1;

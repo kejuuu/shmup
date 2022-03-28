@@ -5,9 +5,9 @@ import java.awt.*;
 
 public abstract class Collidable extends GameObject {
 
-    public Collidable(String path)
+    public Collidable(String path, int zIndex)
     {
-        super(path);
+        super(path, zIndex);
         data.gameCollidables.add(this);
     }
 

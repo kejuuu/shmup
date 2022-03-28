@@ -6,9 +6,9 @@ public abstract class Bullet extends Collidable
 {
     protected int speed;
 
-    public Bullet(String path, int speed) 
+    public Bullet(String path, int speed, int zIndex) 
     {
-        super(path);
+        super(path, zIndex);
         this.speed = speed;
     }
 

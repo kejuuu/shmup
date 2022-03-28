@@ -9,7 +9,7 @@ public class Player extends Collidable
 
     public Player(String path, int health) 
     {
-        super(path);
+        super(path, 3);
         this.health = health;
     }
 

@@ -6,7 +6,7 @@ public class PlayerBullet extends Bullet
 {
     public PlayerBullet(String path, int speed) 
     {
-        super(path, speed);
+        super(path, speed, 2);
     }
 
     @Override

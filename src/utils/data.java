@@ -19,4 +19,14 @@ public class data
 
     public static double PLAYER_FIRE_RATE = 100;
     public static double ENEMY1_FIRE_RATE = 1200;
+
+    public static void addObject(GameObject object)
+    {
+        if(object instanceof Collidable)
+            gameCollidables.add((Collidable)object);
+        gameDrawable.add(object);
+
+        //sort the objects by zIndex
+        gameDrawable.sort((o1, o2) -> o1.zIndex - o2.zIndex);
+    }
 }

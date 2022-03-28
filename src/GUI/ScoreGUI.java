@@ -13,7 +13,7 @@ public class ScoreGUI extends GameObject {
 
     public ScoreGUI()
     {
-        super(constants.EMPTY);
+        super(constants.EMPTY, 99);
         this.transform.setPosition(0,0);
         try {
             pixelFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(constants.pixelFont));

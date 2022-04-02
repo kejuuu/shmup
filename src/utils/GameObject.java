@@ -53,7 +53,9 @@ public abstract class GameObject
             data.gameDrawable.remove(object);
         
         if(data.gameCollidables.contains(object) && object instanceof Collidable)
+        {
             data.gameCollidables.remove(object);
+        }
     }
 
     public String getInfo()

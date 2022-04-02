@@ -1,5 +1,7 @@
 package Characters;
 
+import utils.Collidable;
+
 public class EnemyBullet extends Bullet{
     public EnemyBullet(String path, int speed) {
         super(path, speed, 2);
@@ -12,8 +14,8 @@ public class EnemyBullet extends Bullet{
     }
 
     @Override
-    public void onCollide(String collider) {
-        if (collider.equals("Player"))
+    public void onCollide(Collidable collider) {
+        if (collider.getClass().getSimpleName().equals("Player"))
         {
             destroy(this);
         }

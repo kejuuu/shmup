@@ -1,9 +1,9 @@
 package Characters;
 import GameFrame.GamePanel;
 import utils.Collidable;
+import utils.Transform;
 import utils.constants;
 import utils.data;
-import java.util.Random;
 
 
 public class Enemy extends Collidable
@@ -38,21 +38,22 @@ public class Enemy extends Collidable
     {
         Bullet instance = new EnemyBullet(constants.ENEMY1_BULLET, 10);
         instance.transform.setPosition(
-                transform.positionX + image.getWidth() / 2 - instance.image.getWidth() / 2,
-                transform.positionY - instance.image.getHeight());
+                transform.positionX + image.getWidth() / 2 - 15,
+                transform.positionY + image.getHeight());
         instance.transform.rotation = 180;
         instance.speed = (int)(this.speed + 8);
     }
 
     @Override
-    public void onCollide(String collider)
+    public void onCollide(Collidable collider)
     {
-        if(collider.equals("PlayerBullet"))
+        if(collider.getClass().getSimpleName().equals("PlayerBullet"))
         {
             health--;
+            destroy(collider);
             
-            ShootParticle destroyParticle = new ShootParticle(this.transform);
-            destroyParticle.transform.rotation = new Random().nextInt(360);
+            Transform particleLoc = new Transform(transform.positionX + image.getWidth() / 2, transform.positionY + image.getHeight() / 2, 0);
+            new ShootParticle(particleLoc);
             if(health <= 0)
             {
                 destroy(this);

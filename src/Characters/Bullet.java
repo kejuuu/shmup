@@ -20,5 +20,5 @@ public abstract class Bullet extends Collidable
             destroy(this);
     }
 
-    public abstract void onCollide(String collider);
+    public abstract void onCollide(Collidable collider);
 }

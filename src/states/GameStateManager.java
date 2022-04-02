@@ -20,11 +20,14 @@ public class GameStateManager
 
 		currentState = MENU;
 		states.add(new Menu(this));
-		states.add(new Level1(this));
 	}
-
+	
 	public void changeState(int state) 
 	{
+		if(state == LEVEL1)
+		{
+			states.add(new Level1(this));
+		}
 		currentState = state;
 	}
 

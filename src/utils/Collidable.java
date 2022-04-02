@@ -8,7 +8,6 @@ public abstract class Collidable extends GameObject {
     public Collidable(String path, int zIndex)
     {
         super(path, zIndex);
-        data.gameCollidables.add(this);
     }
 
     @Override
@@ -20,7 +19,7 @@ public abstract class Collidable extends GameObject {
                 continue;
             if(Collision.checkCollision(this, data.gameCollidables.get(i)))
             {
-                onCollide(data.gameCollidables.get(i).getClass().getSimpleName());
+                onCollide(data.gameCollidables.get(i));
             }
         }  
     }
@@ -39,5 +38,5 @@ public abstract class Collidable extends GameObject {
         }
     }
 
-    public abstract void onCollide(String collider);
+    public abstract void onCollide(Collidable collider);
 }

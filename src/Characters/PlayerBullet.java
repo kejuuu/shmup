@@ -1,6 +1,6 @@
 package Characters;
 
-
+import utils.Collidable;
 
 public class PlayerBullet extends Bullet
 {
@@ -17,9 +17,9 @@ public class PlayerBullet extends Bullet
     }
 
     @Override
-    public void onCollide(String collider)
+    public void onCollide(Collidable collider)
     {
-        if (collider.equals("Enemy"))
+        if (collider.getClass().getSimpleName().equals("Enemy"))
         {
             destroy(this);
         }

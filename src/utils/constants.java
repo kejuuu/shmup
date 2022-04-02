@@ -7,7 +7,7 @@ public class constants {
     public static String PLAYER_BULLET = "/Tiles/tile_0000.png";
     public static String ENEMY1_BULLET = "/Tiles/tile_0000_enemy.png";
     public static String pixelFont = "/Fonts/ThaleahFat_TTF.ttf";
-    public static Boolean DEBUG = false;
+    public static Boolean DEBUG = true;
 
     public static String[] SHOOT_PARTICLE = {
         "/Particle/Shootparticle/part__0.png",

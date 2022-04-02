@@ -20,9 +20,9 @@ public class Player extends Collidable
     }
 
     @Override
-    public void onCollide(String collider)
+    public void onCollide(Collidable collider)
     {
-        if(collider.equals("EnemyBullet"))
+        if(collider.getClass().getSimpleName().equals("EnemyBullet"))
         {
             health--;
             if(health <= 0)

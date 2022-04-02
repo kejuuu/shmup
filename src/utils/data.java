@@ -24,6 +24,7 @@ public class data
     {
         if(object instanceof Collidable)
             gameCollidables.add((Collidable)object);
+        
         gameDrawable.add(object);
 
         //sort the objects by zIndex

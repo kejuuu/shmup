@@ -18,7 +18,6 @@ public class Spawner extends GameObject{
         public Spawner(float spawnRate) {
             super(constants.EMPTY, -99);
             this.spawnRate = spawnRate; // in milliseconds
-            Random rng = new Random();
         }
         
         public void update() {

@@ -4,7 +4,10 @@ public abstract class GameState
 {
 	protected GameStateManager gsm;
 
-	public abstract void update();
+	public void update()
+	{
+		
+	};
 
 	public abstract void draw(java.awt.Graphics2D g);
 

@@ -11,22 +11,28 @@ public class ScoreGUI extends GameObject {
     private Font pixelFont;
     private int score;
 
-    public ScoreGUI()
+    private int posX;
+    private int posY;
+
+
+    public ScoreGUI(int posX, int posY)
     {
         super(constants.EMPTY, 99);
-        this.transform.setPosition(0,0);
         try {
-            pixelFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(constants.pixelFont));
+            pixelFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(constants.PIXELFONT));
             pixelFont = pixelFont.deriveFont(Font.PLAIN, 96);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        this.posX = posX;
+        this.posY = posY;
     }
     
     @Override
     public void update()
     {
         score = data.SCORE;
+        System.out.println(data.SCORE);
     }
 
     public void draw(Graphics2D g)
@@ -34,7 +40,7 @@ public class ScoreGUI extends GameObject {
         super.draw(g);
         g.setFont(pixelFont);
         g.setColor(Color.black);
-        g.drawString("Score: " + String.valueOf(score), 10, 50);
+        g.drawString("Score: " + String.valueOf(score), posX, posY);
         g.setColor(Color.black);
         g.setFont(Font.decode(null));
     }

@@ -21,7 +21,7 @@ public class HeartGUI extends GameObject {
 //        player = new Player(constants.PLAYER, 3);
         this.transform.setPosition(50+width, 1070-height);
         try {
-            pixelFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(constants.pixelFont));
+            pixelFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(constants.PIXELFONT));
             pixelFont = pixelFont.deriveFont(Font.PLAIN, 96);
         } catch (Exception e) {
             e.printStackTrace();

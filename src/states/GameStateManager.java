@@ -1,35 +1,55 @@
 package states;
 
-import java.util.ArrayList;
+import java.util.Map;
+
+import screens.GameOver;
 import screens.Level1;
 import screens.Menu;
+import utils.data;
 
 public class GameStateManager
 {
 
-	public ArrayList<GameState> states;
+	public Map<Integer, GameState> states;
 	private int currentState;
 
 	public static final int MENU = 0;
 	public static final int LEVEL1 = 1;
-	public static final int DEAD = 2;
+	public static final int GAMEOVER = 2;
 
 	public GameStateManager() 
 	{
-		states = new ArrayList<GameState>();
+		states = new java.util.HashMap<Integer, GameState>();
 
 		currentState = MENU;
-		states.add(new Menu(this));
+		states.put(MENU, new Menu(this));
 	}
 	
 	public void changeState(int state) 
 	{
-		if(state == LEVEL1)
+		data.gameDrawable.clear();
+		data.gameCollidables.clear();
+		
+		switch (state) 
 		{
-			states.add(new Level1(this));
+			case MENU:
+			states.put(MENU, new Menu(this));
+			break;
+			case LEVEL1:
+			states.put(LEVEL1, new Level1(this));
+			break;
+			case GAMEOVER:
+			states.put(GAMEOVER, new GameOver(this));
+			break;
+			default:
+			break;
 		}
+		states.remove(currentState);
+
 		currentState = state;
+
 	}
+
 
 	public void update()
 	{

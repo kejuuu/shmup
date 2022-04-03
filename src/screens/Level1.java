@@ -32,7 +32,7 @@ public class Level1 extends GameState
         new ShootParticle(new Transform(-100, -100, 0));
         player = new Player(constants.PLAYER, 5);
         new HeartGUI(constants.PLAYER);
-        new ScoreGUI();
+        new ScoreGUI(10, 50);
     }
 
     public void update()
@@ -56,7 +56,8 @@ public class Level1 extends GameState
 
         if(player.health <= 0)
         {
-            
+            // Pergi ke state gameover
+            gsm.changeState(GameStateManager.GAMEOVER);
         }
     }
 

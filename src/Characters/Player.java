@@ -1,6 +1,8 @@
 package Characters;
 
 import utils.Collidable;
+import utils.Transform;
+
 import java.awt.MouseInfo;
 
 public class Player extends Collidable
@@ -25,10 +27,17 @@ public class Player extends Collidable
         if(collider.getClass().getSimpleName().equals("EnemyBullet"))
         {
             health--;
-            if(health <= 0)
-            {
-                destroy(this);
-            }
+        }
+        else if (collider.getClass().getSimpleName().equals("Enemy"))
+        {
+            health--;
+            Transform particleLoc = new Transform(transform.positionX + image.getWidth() / 2, transform.positionY + image.getHeight() / 2, 0);
+            new ShootParticle(particleLoc);
+            destroy(collider);
+        }
+        if(health <= 0)
+        {
+            destroy(this);
         }
     }
 

@@ -7,12 +7,6 @@ public class ExitButton extends Button
     {
         super(path, posX, posY);
     }
-
-    @Override
-    public void update()
-    {
-
-    }
     
     @Override
     public void onClick() 

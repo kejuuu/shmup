@@ -11,6 +11,8 @@ public class constants {
     public static String PIXELFONT = "/Fonts/ThaleahFat_TTF.ttf";
     public static String PLAYBUTTON = "/GUI/playbutton.png";
     public static String EXITBUTTON = "/GUI/exitButton.png";
+    public static String PLAYAGAINBUTTON = "/GUI/PlayagainButton.png";
+    public static String MAINMENUBUTTON = "/GUI/MainmenuButton.png";
     public static Boolean DEBUG = false;
 
     public static String[] SHOOT_PARTICLE = {

@@ -26,13 +26,14 @@ public class ScoreGUI extends GameObject {
         }
         this.posX = posX;
         this.posY = posY;
+        score = data.SCORE;
+
     }
     
     @Override
     public void update()
     {
         score = data.SCORE;
-        System.out.println(data.SCORE);
     }
 
     public void draw(Graphics2D g)

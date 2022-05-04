@@ -21,12 +21,6 @@ public class Menu extends GameState {
         playButton = new PlayButton(constants.PLAYBUTTON, 960, 900, gsm);
         exitButton = new ExitButton(constants.EXITBUTTON, 1850, 75);
     }
-
-    @Override
-    public void update()
-    {
-        
-    }
     
     @Override
     public void draw(Graphics2D g)

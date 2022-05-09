@@ -13,13 +13,13 @@ public abstract class Collidable extends GameObject {
     @Override
     public void update()
     {
-        for(int i=0;i<data.gameCollidables.size();i++)
+        for(int i=0;i<data.getGameCollidables().size();i++)
         {
-            if(data.gameCollidables.get(i) == this)
+            if(data.getGameCollidables().get(i) == this)
                 continue;
-            if(Collision.checkCollision(this, data.gameCollidables.get(i)))
+            if(Collision.checkCollision(this, data.getGameCollidables().get(i)))
             {
-                onCollide(data.gameCollidables.get(i));
+                onCollide(data.getGameCollidables().get(i));
             }
         }  
     }

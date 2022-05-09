@@ -22,7 +22,6 @@ public class HeartGUI extends GameObject {
         this.posX = posX;
         this.posY = posY;
         player = (Player)GameObject.find("Player");
-//        player = new Player(constants.PLAYER, 3);
         this.transform.setPosition(posX + width, posY - height - 50);
         try {
             pixelFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(constants.PIXELFONT));
@@ -34,7 +33,7 @@ public class HeartGUI extends GameObject {
 
     @Override
     public void update() {
-        health = player.health;
+        this.health = player.getHealth();
     }
 
     public void draw(Graphics2D g)

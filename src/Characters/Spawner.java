@@ -34,12 +34,12 @@ public class Spawner extends GameObject{
             int y = -height;
             Enemy enemy = new Enemy(constants.ENEMY1, 5);
             enemy.transform.setPosition(x, y);
-            enemy.speed = rng.nextInt(data.WAVE) + 1;
+            enemy.setSpeed(rng.nextInt(data.getWAVE()) + 1);
 
             spawnedEnemy++;
             if(spawnedEnemy >= waveTreshold) {
-                data.WAVE++;
-                waveTreshold = data.WAVE*2;
+                data.setWAVE(data.getWAVE() + 1);
+                waveTreshold = data.getWAVE()*2;
                 spawnedEnemy = 0;
                 spawnRate -= 250f;
                 if(spawnRate <= 600) {

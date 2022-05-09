@@ -7,7 +7,7 @@ import java.awt.MouseInfo;
 
 public class Player extends Collidable
 {
-    public int health = 5;
+    private int health = 5;
 
     public Player(String path, int health) 
     {
@@ -15,7 +15,17 @@ public class Player extends Collidable
         this.health = health;
     }
 
-    public void update()
+    public int getHealth()
+	{
+		return health;
+	}
+
+	public void setHealth(int health)
+	{
+		this.health = health;
+	}
+
+	public void update()
     {
         super.update();
         transform.setPosition(MouseInfo.getPointerInfo().getLocation().x, MouseInfo.getPointerInfo().getLocation().y);

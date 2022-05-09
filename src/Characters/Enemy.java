@@ -8,11 +8,31 @@ import utils.data;
 
 public class Enemy extends Collidable
 {
-    public int health = 5;
-    private double fireRate = data.ENEMY1_FIRE_RATE; // in milliseconds
-    public float speed;
+	private int health = 5;
+    private double fireRate = data.getENEMY1_FIRE_RATE(); // in milliseconds
+    private float speed;
 
-    public Enemy(String path, int health) 
+    public int getHealth()
+	{
+		return health;
+	}
+
+	public void setHealth(int health)
+	{
+		this.health = health;
+	}
+	
+	public float getSpeed()
+	{
+		return speed;
+	}
+
+	public void setSpeed(float speed)
+	{
+		this.speed = speed;
+	}
+
+	public Enemy(String path, int health) 
     {
         super(path, 3);
         this.transform.rotation = 180;
@@ -30,7 +50,7 @@ public class Enemy extends Collidable
         if (fireRate <= 0)
         {
             fireBullet();
-            fireRate = data.ENEMY1_FIRE_RATE;
+            fireRate = data.getENEMY1_FIRE_RATE();
         }
     }
 
@@ -56,6 +76,7 @@ public class Enemy extends Collidable
             new ShootParticle(particleLoc);
             if(health <= 0)
             {
+            	data.addSCORE(100);
                 destroy(this);
             }
         }

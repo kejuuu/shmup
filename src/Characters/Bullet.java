@@ -1,7 +1,8 @@
 package Characters;
 
 import utils.Collidable;
-// import java.util.List;
+import GameFrame.GamePanel;
+
 public abstract class Bullet extends Collidable
 {
     protected int speed;
@@ -16,7 +17,7 @@ public abstract class Bullet extends Collidable
     {
         super.update();
         
-        if(transform.positionY < 0 || transform.positionY > 1080)
+        if(transform.positionY < 0 || transform.positionY > GamePanel.getScreenHeight())
             destroy(this);
     }
 

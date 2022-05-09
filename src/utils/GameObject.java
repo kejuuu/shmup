@@ -50,11 +50,11 @@ public abstract class GameObject
 
     public void destroy(GameObject object)
     {
-        if(data.gameDrawable.contains(object))
-            data.gameDrawable.remove(object);
+        if(data.getGameDrawable().contains(object))
+            data.getGameDrawable().remove(object);
         
-        if(data.gameCollidables.contains(object) && object instanceof Collidable)
-            data.gameCollidables.remove(object);
+        if(data.getGameCollidables().contains(object) && object instanceof Collidable)
+            data.getGameCollidables().remove(object);
     }
 
     public String getInfo()
@@ -64,10 +64,10 @@ public abstract class GameObject
 
     public static GameObject find(String className)
     {
-        for(int i=0;i<data.gameDrawable.size();i++)
+        for(int i=0;i<data.getGameDrawable().size();i++)
         {
-            if(data.gameDrawable.get(i).getClass().getSimpleName().equals(className))
-                return data.gameDrawable.get(i);
+            if(data.getGameDrawable().get(i).getClass().getSimpleName().equals(className))
+                return data.getGameDrawable().get(i);
         }
         return null;
     }

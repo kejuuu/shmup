@@ -17,7 +17,7 @@ public class AnimatedSprite
     private List<BufferedImage> frames = new ArrayList<BufferedImage>();
 
     public AnimatedSprite(String spriteName, String[] spritePaths, int frameCount, Transform transform) {
-        if (!data.cachedAnimatedSprite.containsKey(spriteName))
+        if (!data.getCachedAnimatedSprite().containsKey(spriteName))
         {
             for (int i = 0; i < spritePaths.length; i++)
             {
@@ -29,25 +29,25 @@ public class AnimatedSprite
                     e.printStackTrace();
                 }
             }
-            data.cachedAnimatedSprite.put(spriteName, frames);
+            data.getCachedAnimatedSprite().put(spriteName, frames);
         } 
         else
         {
-            frames = data.cachedAnimatedSprite.get(spriteName);
+            frames = data.getCachedAnimatedSprite().get(spriteName);
         }
 
         this.frameCount = frameCount;
         this.transform = transform;
         width = frames.get(0).getWidth();
         height = frames.get(0).getHeight();
-        data.gameAnimatedSprites.add(this);
+        data.getGameAnimatedSprites().add(this);
     }
 
     public void update()
     {
         currentFrame++;
         if (currentFrame >= frameCount)
-            data.gameAnimatedSprites.remove(this);
+            data.getGameAnimatedSprites().remove(this);
     }
 
     public void draw(Graphics2D g)

@@ -10,7 +10,7 @@ import utils.data;
 public class GameStateManager
 {
 
-	public Map<Integer, GameState> states;
+	private Map<Integer, GameState> states;
 	private int currentState;
 
 	public static final int MENU = 0;
@@ -27,8 +27,8 @@ public class GameStateManager
 	
 	public void changeState(int state) 
 	{
-		data.gameDrawable.clear();
-		data.gameCollidables.clear();
+		data.getGameDrawable().clear();
+		data.getGameCollidables().clear();
 		
 		switch (state) 
 		{

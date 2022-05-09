@@ -29,15 +29,15 @@ public class GameOver extends GameState
     @Override 
     public void update() 
     { 
-        for (int i = 0; i < data.gameDrawable.size(); i++)
-            data.gameDrawable.get(i).update();
+        for (int i = 0; i < data.getGameDrawable().size(); i++)
+            data.getGameDrawable().get(i).update();
     }
 
     @Override
     public void draw(Graphics2D g) 
     {
-        for (int i = 0; i < data.gameDrawable.size(); i++)
-            data.gameDrawable.get(i).draw(g);
+        for (int i = 0; i < data.getGameDrawable().size(); i++)
+            data.getGameDrawable().get(i).draw(g);
     }
 
     @Override

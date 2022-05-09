@@ -27,8 +27,8 @@ public class Menu extends GameState {
     @Override
     public void draw(Graphics2D g)
     {
-        for (int i = 0; i < data.gameDrawable.size(); i++)
-            data.gameDrawable.get(i).draw(g);
+        for (int i = 0; i < data.getGameDrawable().size(); i++)
+            data.getGameDrawable().get(i).draw(g);
     }
 
     @Override
@@ -49,6 +49,12 @@ public class Menu extends GameState {
     {
         
     }
+
+	@Override
+	public void update()
+	{
+		
+	}
 
 
 }

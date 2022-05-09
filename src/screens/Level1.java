@@ -20,7 +20,7 @@ public class Level1 extends GameState
     private Player player;
 
     private boolean isFiring = false;
-    private double fireRate = data.PLAYER_FIRE_RATE; // in milliseconds
+    private double fireRate = data.getPLAYER_FIRE_RATE(); // in milliseconds
 
 
     public Level1(GameStateManager gsm) 
@@ -37,11 +37,11 @@ public class Level1 extends GameState
 
     public void update()
     {
-        for (int i=0; i<data.gameDrawable.size(); i++)
-            data.gameDrawable.get(i).update();
+        for (int i=0; i<data.getGameDrawable().size(); i++)
+            data.getGameDrawable().get(i).update();
         
-        for (int i=0; i<data.gameAnimatedSprites.size(); i++)
-            data.gameAnimatedSprites.get(i).update();
+        for (int i=0; i<data.getGameAnimatedSprites().size(); i++)
+            data.getGameAnimatedSprites().get(i).update();
         
         if (isFiring)
         {
@@ -49,12 +49,12 @@ public class Level1 extends GameState
             if (fireRate <= 0)
             {
                 firePlayerBullet();
-                fireRate = data.PLAYER_FIRE_RATE;
+                fireRate = data.getPLAYER_FIRE_RATE();
             }
         }
-        data.SCORE += GamePanel.deltaTime() * 0.1;
+        data.addSCORE((int)(GamePanel.deltaTime() * 0.1));
 
-        if(player.health <= 0)
+        if(player.getHealth() <= 0)
         {
             // Pergi ke state gameover
             gsm.changeState(GameStateManager.GAMEOVER);
@@ -71,11 +71,11 @@ public class Level1 extends GameState
 
     public void draw(Graphics2D g)
     {
-        for (int i = 0; i < data.gameDrawable.size(); i++)
-            data.gameDrawable.get(i).draw(g);
+        for (int i = 0; i < data.getGameDrawable().size(); i++)
+            data.getGameDrawable().get(i).draw(g);
         
-        for (int i = 0; i < data.gameAnimatedSprites.size(); i++)
-            data.gameAnimatedSprites.get(i).draw(g);
+        for (int i = 0; i < data.getGameAnimatedSprites().size(); i++)
+            data.getGameAnimatedSprites().get(i).draw(g);
     }
 
     public void mousePressed(int x, int y)

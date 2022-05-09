@@ -4,6 +4,7 @@ import java.awt.image.*;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import GameFrame.GamePanel;
 
 public abstract class GameObject
 {
@@ -42,8 +43,8 @@ public abstract class GameObject
         AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
         AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 
-        g.drawImage(op.filter(image, null), transform.positionX - width * 3 / 2, transform.positionY - height * 3 / 2,
-                width * 3, height * 3, null);
+        g.drawImage(op.filter(image, null), transform.positionX - width * 3 / 2 * GamePanel.getScreenWidth() / 1920, transform.positionY - height * 3 / 2 * GamePanel.getScreenHeight() / 1080,
+                width * 3 * GamePanel.getScreenWidth() / 1920, height * 3 * GamePanel.getScreenHeight() / 1080, null);
 
     }
 

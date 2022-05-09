@@ -30,9 +30,9 @@ public class Level1 extends GameState
         new Background(constants.BACKGROUND, 1);
         new Spawner(3000);
         new ShootParticle(new Transform(-100, -100, 0));
-        player = new Player(constants.PLAYER, 5);
-        new HeartGUI(constants.PLAYER);
-        new ScoreGUI(10, 50);
+        this.player = new Player(constants.PLAYER, 5);
+        new HeartGUI(constants.PLAYER, 50, GamePanel.getScreenHeight());
+        new ScoreGUI(10, 50, false);
     }
 
     public void update()

@@ -30,7 +30,7 @@ public class Spawner extends GameObject{
         
         public void spawn() {
             Random rng = new Random();
-            int x = rng.nextInt(GamePanel.SCREEN_WIDTH - width);
+            int x = rng.nextInt(GamePanel.getScreenWidth() - width);
             int y = -height;
             Enemy enemy = new Enemy(constants.ENEMY1, 5);
             enemy.transform.setPosition(x, y);

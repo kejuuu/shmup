@@ -14,15 +14,19 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 	 * 
 	 */
 	private static final long serialVersionUID = 643646138463852373L;
+	
+	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	private static final int SCREEN_WIDTH = (int)screenSize.getWidth();
+	private static final int SCREEN_HEIGHT = (int)screenSize.getHeight();
+	private static final int SCALE = 1;
+	
 
-	public static final int SCREEN_WIDTH = 1920;
-	public static final int SCREEN_HEIGHT = 1080;
-	public static final int SCALE = 1;
 
 	private Thread thread;
 	private boolean running;
 	private static int FPS = 60;
 	private static long tpf = 1000 / FPS;
+	
 	public static long deltaTime()
 	{
 		return tpf;
@@ -37,8 +41,8 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 	GamePanel() 
 	{
 		super();
-		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-		this.setMinimumSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+		this.setPreferredSize(screenSize);
+		this.setMinimumSize(screenSize);
 		this.setBackground(Color.black);
 		this.setFocusable(true);
 		requestFocus();
@@ -148,6 +152,25 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 	{
 	}
 
+	public static Dimension getScreensize()
+	{
+		return screenSize;
+	}
+
+	public static int getScreenWidth()
+	{
+		return SCREEN_WIDTH;
+	}
+
+	public static int getScreenHeight()
+	{
+		return SCREEN_HEIGHT;
+	}
+
+	public static int getScale()
+	{
+		return SCALE;
+	}
 
 
 }

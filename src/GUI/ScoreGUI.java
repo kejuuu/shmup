@@ -10,12 +10,14 @@ public class ScoreGUI extends GameObject {
     
     private Font pixelFont;
     private int score;
+    private String text;
+    private boolean center;
 
     private int posX;
     private int posY;
 
 
-    public ScoreGUI(int posX, int posY)
+    public ScoreGUI(int posX, int posY, boolean center)
     {
         super(constants.EMPTY, 99);
         try {
@@ -26,22 +28,36 @@ public class ScoreGUI extends GameObject {
         }
         this.posX = posX;
         this.posY = posY;
-        score = data.SCORE;
+        this.score = data.SCORE;
+        this.text = "Score: " + String.valueOf(score);
+        this.center = center;
 
     }
     
     @Override
     public void update()
     {
-        score = data.SCORE;
+        this.score = data.SCORE;
+        this.text = "Score: " + String.valueOf(score);
     }
 
     public void draw(Graphics2D g)
     {
         super.draw(g);
-        g.setFont(pixelFont);
+        try {
+	        g.setFont(pixelFont);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         g.setColor(Color.black);
-        g.drawString("Score: " + String.valueOf(score), posX, posY);
+        if (center) 
+        {
+        	g.drawString(text, (int)(posX - g.getFontMetrics(pixelFont).stringWidth(text) / 2), posY);
+        }
+        else 
+        {
+        	g.drawString(text, posX, posY);
+        }
         g.setColor(Color.black);
         g.setFont(Font.decode(null));
     }

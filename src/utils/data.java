@@ -9,7 +9,7 @@ import java.awt.image.*;
 public class data
 {
 	private static List<GameObject> gameDrawable = new ArrayList<GameObject>();
-	private static List<Collidable> gameCollidables = new ArrayList<Collidable>();
+	private static List<PhysicsGameObject> gameCollidables = new ArrayList<PhysicsGameObject>();
 	private static List<AnimatedSprite> gameAnimatedSprites = new ArrayList<AnimatedSprite>();
 
 	private static Map<String, List<BufferedImage>> cachedAnimatedSprite = new HashMap<String, List<BufferedImage>>();
@@ -22,8 +22,8 @@ public class data
 
 	public static void addObject(GameObject object)
 	{
-		if (object instanceof Collidable)
-			gameCollidables.add((Collidable) object);
+		if (object instanceof PhysicsGameObject)
+			gameCollidables.add((PhysicsGameObject) object);
 
 		gameDrawable.add(object);
 
@@ -106,12 +106,12 @@ public class data
 		data.gameDrawable = gameDrawable;
 	}
 
-	public static List<Collidable> getGameCollidables()
+	public static List<PhysicsGameObject> getGameCollidables()
 	{
 		return gameCollidables;
 	}
 
-	public static void setGameCollidables(List<Collidable> gameCollidables)
+	public static void setGameCollidables(List<PhysicsGameObject> gameCollidables)
 	{
 		data.gameCollidables = gameCollidables;
 	}

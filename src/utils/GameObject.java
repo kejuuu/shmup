@@ -53,7 +53,7 @@ public abstract class GameObject
 		if (data.getGameDrawable().contains(object))
 			data.getGameDrawable().remove(object);
 
-		if (data.getGameCollidables().contains(object) && object instanceof Collidable)
+		if (data.getGameCollidables().contains(object) && object instanceof PhysicsGameObject)
 			data.getGameCollidables().remove(object);
 	}
 

@@ -1,6 +1,6 @@
 package Characters;
 
-import utils.Collidable;
+import utils.PhysicsGameObject;
 
 public class PlayerBullet extends Bullet
 {
@@ -17,7 +17,7 @@ public class PlayerBullet extends Bullet
 	}
 
 	@Override
-	public void onCollide(Collidable collider)
+	public void onCollide(PhysicsGameObject collider)
 	{
 		if (collider.getClass().getSimpleName().equals("Enemy"))
 		{

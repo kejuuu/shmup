@@ -1,9 +1,9 @@
 package Characters;
 
-import utils.Collidable;
+import utils.PhysicsGameObject;
 import GameFrame.GamePanel;
 
-public abstract class Bullet extends Collidable
+public abstract class Bullet extends PhysicsGameObject
 {
     protected int speed;
 
@@ -21,5 +21,5 @@ public abstract class Bullet extends Collidable
             destroy(this);
     }
 
-    public abstract void onCollide(Collidable collider);
+    public abstract void onCollide(PhysicsGameObject collider);
 }

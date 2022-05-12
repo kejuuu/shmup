@@ -1,13 +1,13 @@
 package Characters;
 import GameFrame.GamePanel;
-import utils.Collidable;
+import utils.PhysicsGameObject;
 import utils.Transform;
 import utils.constants;
 import utils.data;
 import utils.Attackable;
 
 
-public class Enemy extends Collidable implements Attackable
+public class Enemy extends PhysicsGameObject implements Attackable
 {
 	private int health = 5;
     private double fireRate = data.getENEMY1_FIRE_RATE(); // in milliseconds
@@ -67,7 +67,7 @@ public class Enemy extends Collidable implements Attackable
     }
 
     @Override
-    public void onCollide(Collidable collider)
+    public void onCollide(PhysicsGameObject collider)
     {
         if(collider.getClass().getSimpleName().equals("PlayerBullet"))
         {

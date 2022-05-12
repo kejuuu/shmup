@@ -1,6 +1,6 @@
 package Characters;
 
-import utils.Collidable;
+import utils.PhysicsGameObject;
 import utils.Transform;
 import utils.Attackable;
 import utils.constants;
@@ -10,7 +10,7 @@ import java.awt.MouseInfo;
 
 import GameFrame.GamePanel;
 
-public class Player extends Collidable implements Attackable
+public class Player extends PhysicsGameObject implements Attackable
 {
 	private int health = 5;
 	private boolean isFiring = false;
@@ -61,7 +61,7 @@ public class Player extends Collidable implements Attackable
 	}
 
 	@Override
-	public void onCollide(Collidable collider)
+	public void onCollide(PhysicsGameObject collider)
 	{
 		if (collider.getClass().getSimpleName().equals("EnemyBullet"))
 		{

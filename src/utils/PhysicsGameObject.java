@@ -4,10 +4,10 @@ import java.awt.*;
 
 import GameFrame.GamePanel;
 
-public abstract class Collidable extends GameObject
+public abstract class PhysicsGameObject extends GameObject
 {
 
-	public Collidable(String path, int zIndex) {
+	public PhysicsGameObject(String path, int zIndex) {
 		super(path, zIndex);
 	}
 
@@ -42,5 +42,5 @@ public abstract class Collidable extends GameObject
 		}
 	}
 
-	public abstract void onCollide(Collidable collider);
+	public abstract void onCollide(PhysicsGameObject collider);
 }

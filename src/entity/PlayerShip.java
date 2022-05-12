@@ -1,22 +1,22 @@
-package Characters;
+package entity;
 
 import utils.PhysicsGameObject;
 import utils.Transform;
 import utils.Attackable;
-import utils.constants;
-import utils.data;
+import utils.Constants;
+import utils.Data;
 
 import java.awt.MouseInfo;
 
 import GameFrame.GamePanel;
 
-public class Player extends PhysicsGameObject implements Attackable
+public class PlayerShip extends PhysicsGameObject implements Attackable
 {
 	private int health = 5;
 	private boolean isFiring = false;
-	private double fireRate = data.getPLAYER_FIRE_RATE(); // in milliseconds
+	private double fireRate = Data.getPLAYER_FIRE_RATE(); // in milliseconds
 
-	public Player(String path, int health) {
+	public PlayerShip(String path, int health) {
 		super(path, 3);
 		this.health = health;
 	}
@@ -46,7 +46,7 @@ public class Player extends PhysicsGameObject implements Attackable
 			if (fireRate <= 0)
 			{
 				fireBullet();
-				fireRate = data.getPLAYER_FIRE_RATE();
+				fireRate = Data.getPLAYER_FIRE_RATE();
 			}
 		}
 	}
@@ -54,7 +54,7 @@ public class Player extends PhysicsGameObject implements Attackable
 	@Override
 	public void fireBullet()
 	{
-		PlayerBullet instance = new PlayerBullet(constants.PLAYER_BULLET, 10);
+		PlayerBullet instance = new PlayerBullet(Constants.PLAYER_BULLET, 10);
 		instance.transform.setPosition(transform.positionX + image.getWidth() / 2 - 15,
 				transform.positionY - instance.image.getHeight());
 

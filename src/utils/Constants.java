@@ -1,6 +1,6 @@
 package utils;
 
-public class constants
+public class Constants
 {
 	public static String BACKGROUND = "/Background/background.png";
 	public static String MENUBACKGROUND = "/Background/Menu.png";

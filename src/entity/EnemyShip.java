@@ -1,16 +1,16 @@
-package Characters;
+package entity;
 import GameFrame.GamePanel;
 import utils.PhysicsGameObject;
 import utils.Transform;
-import utils.constants;
-import utils.data;
+import utils.Constants;
+import utils.Data;
 import utils.Attackable;
 
 
-public class Enemy extends PhysicsGameObject implements Attackable
+public class EnemyShip extends PhysicsGameObject implements Attackable
 {
 	private int health = 5;
-    private double fireRate = data.getENEMY1_FIRE_RATE(); // in milliseconds
+    private double fireRate = Data.getENEMY1_FIRE_RATE(); // in milliseconds
     private float speed;
 
     public int getHealth()
@@ -33,7 +33,7 @@ public class Enemy extends PhysicsGameObject implements Attackable
 		this.speed = speed;
 	}
 
-	public Enemy(String path, int health) 
+	public EnemyShip(String path, int health) 
     {
         super(path, 3);
         this.transform.rotation = 180;
@@ -51,14 +51,14 @@ public class Enemy extends PhysicsGameObject implements Attackable
         if (fireRate <= 0)
         {
             fireBullet();
-            fireRate = data.getENEMY1_FIRE_RATE();
+            fireRate = Data.getENEMY1_FIRE_RATE();
         }
     }
     
     @Override
     public void fireBullet()
     {
-        Bullet instance = new EnemyBullet(constants.ENEMY1_BULLET, 10);
+        Bullet instance = new EnemyBullet(Constants.ENEMY1_BULLET, 10);
         instance.transform.setPosition(
                 transform.positionX + image.getWidth() / 2 - 15,
                 transform.positionY + image.getHeight());
@@ -78,7 +78,7 @@ public class Enemy extends PhysicsGameObject implements Attackable
             new ShootParticle(particleLoc);
             if(health <= 0)
             {
-            	data.addSCORE(100);
+            	Data.addSCORE(100);
                 destroy(this);
             }
 		}

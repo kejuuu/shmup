@@ -1,4 +1,4 @@
-package Characters;
+package entity;
 
 import utils.PhysicsGameObject;
 import GameFrame.GamePanel;

@@ -30,7 +30,7 @@ public abstract class GameObject
 		imagePath = path;
 		this.zIndex = zIndex;
 
-		data.addObject(this);
+		Data.addObject(this);
 	}
 
 	public void draw(Graphics2D g)
@@ -50,11 +50,11 @@ public abstract class GameObject
 
 	public void destroy(GameObject object)
 	{
-		if (data.getGameDrawable().contains(object))
-			data.getGameDrawable().remove(object);
+		if (Data.getGameDrawable().contains(object))
+			Data.getGameDrawable().remove(object);
 
-		if (data.getGameCollidables().contains(object) && object instanceof PhysicsGameObject)
-			data.getGameCollidables().remove(object);
+		if (Data.getGameCollidables().contains(object) && object instanceof PhysicsGameObject)
+			Data.getGameCollidables().remove(object);
 	}
 
 	public String getInfo()
@@ -64,10 +64,10 @@ public abstract class GameObject
 
 	public static GameObject find(String className)
 	{
-		for (int i = 0; i < data.getGameDrawable().size(); i++)
+		for (int i = 0; i < Data.getGameDrawable().size(); i++)
 		{
-			if (data.getGameDrawable().get(i).getClass().getSimpleName().equals(className))
-				return data.getGameDrawable().get(i);
+			if (Data.getGameDrawable().get(i).getClass().getSimpleName().equals(className))
+				return Data.getGameDrawable().get(i);
 		}
 		return null;
 	}

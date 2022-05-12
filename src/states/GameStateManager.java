@@ -5,7 +5,7 @@ import java.util.Map;
 import screens.GameOver;
 import screens.Level1;
 import screens.Menu;
-import utils.data;
+import utils.Data;
 
 public class GameStateManager
 {
@@ -27,8 +27,8 @@ public class GameStateManager
 
 	public void changeState(int state)
 	{
-		data.getGameDrawable().clear();
-		data.getGameCollidables().clear();
+		Data.getGameDrawable().clear();
+		Data.getGameCollidables().clear();
 
 		switch (state)
 		{

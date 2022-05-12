@@ -14,13 +14,13 @@ public abstract class PhysicsGameObject extends GameObject
 	@Override
 	public void update()
 	{
-		for (int i = 0; i < data.getGameCollidables().size(); i++)
+		for (int i = 0; i < Data.getGameCollidables().size(); i++)
 		{
-			if (data.getGameCollidables().get(i) == this)
+			if (Data.getGameCollidables().get(i) == this)
 				continue;
-			if (Collision.checkCollision(this, data.getGameCollidables().get(i)))
+			if (Collision.checkCollision(this, Data.getGameCollidables().get(i)))
 			{
-				onCollide(data.getGameCollidables().get(i));
+				onCollide(Data.getGameCollidables().get(i));
 			}
 		}
 	}
@@ -30,7 +30,7 @@ public abstract class PhysicsGameObject extends GameObject
 	{
 		super.draw(g);
 
-		if (constants.DEBUG)
+		if (Constants.DEBUG)
 		{
 			g.setColor(Color.blue);
 			g.drawRect(transform.positionX - width * 3 / 2 * GamePanel.getScreenWidth() / 1920,

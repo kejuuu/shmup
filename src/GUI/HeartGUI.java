@@ -1,11 +1,11 @@
 package GUI;
 
 import utils.GameObject;
-import utils.constants;
+import utils.Constants;
 
 import java.awt.*;
 
-import Characters.Player;
+import entity.PlayerShip;
 
 public class HeartGUI extends GameObject
 {
@@ -13,7 +13,7 @@ public class HeartGUI extends GameObject
 	private Font pixelFont;
 
 	private int health = 0;
-	private Player player;
+	private PlayerShip player;
 
 	private int posX;
 	private int posY;
@@ -23,11 +23,11 @@ public class HeartGUI extends GameObject
 		super(path, 99);
 		this.posX = posX;
 		this.posY = posY;
-		player = (Player) GameObject.find("Player");
+		player = (PlayerShip) GameObject.find("Player");
 		this.transform.setPosition(posX + width, posY - height - 50);
 		try
 		{
-			pixelFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(constants.PIXELFONT));
+			pixelFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(Constants.PIXELFONT));
 			pixelFont = pixelFont.deriveFont(Font.PLAIN, 96);
 		} catch (Exception e)
 		{

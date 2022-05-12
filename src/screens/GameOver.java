@@ -8,8 +8,8 @@ import GUI.ScoreGUI;
 import GameFrame.GamePanel;
 import utils.Background;
 import utils.Collision;
-import utils.constants;
-import utils.data;
+import utils.Constants;
+import utils.Data;
 import states.GameState;
 import states.GameStateManager;
 
@@ -26,21 +26,21 @@ public class GameOver extends GameState
 				(int) (GamePanel.getScreenHeight() / 2) + 250, gsm);
 		mainMenuButton = new MainmenuButton((int) (GamePanel.getScreenWidth() / 2 + GamePanel.getScreenWidth() / 8),
 				(int) (GamePanel.getScreenHeight() / 2) + 250, gsm);
-		new Background(constants.GAMEOVERBACKGROUND, 0);
+		new Background(Constants.GAMEOVERBACKGROUND, 0);
 	}
 
 	@Override
 	public void update()
 	{
-		for (int i = 0; i < data.getGameDrawable().size(); i++)
-			data.getGameDrawable().get(i).update();
+		for (int i = 0; i < Data.getGameDrawable().size(); i++)
+			Data.getGameDrawable().get(i).update();
 	}
 
 	@Override
 	public void draw(Graphics2D g)
 	{
-		for (int i = 0; i < data.getGameDrawable().size(); i++)
-			data.getGameDrawable().get(i).draw(g);
+		for (int i = 0; i < Data.getGameDrawable().size(); i++)
+			Data.getGameDrawable().get(i).draw(g);
 	}
 
 	@Override

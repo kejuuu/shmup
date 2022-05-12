@@ -1,8 +1,8 @@
 package GUI;
 
 import states.GameStateManager;
-import utils.constants;
-import utils.data;
+import utils.Constants;
+import utils.Data;
 
 public class MainmenuButton extends Button
 {
@@ -11,14 +11,14 @@ public class MainmenuButton extends Button
 
 	public MainmenuButton(int posX, int posY, GameStateManager gsm) 
 	{
-		super(constants.MAINMENUBUTTON, posX, posY);
+		super(Constants.MAINMENUBUTTON, posX, posY);
 		this.gsm = gsm;
 	}
 
 	@Override
 	public void onClick()
 	{
-		data.setSCORE(0);
+		Data.setSCORE(0);
 		gsm.changeState(GameStateManager.MENU);
 	}
 

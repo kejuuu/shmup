@@ -8,9 +8,9 @@ import GUI.PlayButton;
 import states.GameState;
 import states.GameStateManager;
 import utils.Background;
-import utils.constants;
+import utils.Constants;
 import utils.Collision;
-import utils.data;
+import utils.Data;
 
 public class Menu extends GameState
 {
@@ -21,17 +21,17 @@ public class Menu extends GameState
 	public Menu(GameStateManager gsm) 
 	{
 		this.gsm = gsm;
-		new Background(constants.MENUBACKGROUND, 0);
-		playButton = new PlayButton(constants.PLAYBUTTON, (int) (GamePanel.getScreenWidth() / 2),
+		new Background(Constants.MENUBACKGROUND, 0);
+		playButton = new PlayButton(Constants.PLAYBUTTON, (int) (GamePanel.getScreenWidth() / 2),
 				GamePanel.getScreenHeight() - (int) (GamePanel.getScreenWidth() / 8), gsm);
-		exitButton = new ExitButton(constants.EXITBUTTON, GamePanel.getScreenWidth() - 75, 75);
+		exitButton = new ExitButton(Constants.EXITBUTTON, GamePanel.getScreenWidth() - 75, 75);
 	}
 
 	@Override
 	public void draw(Graphics2D g)
 	{
-		for (int i = 0; i < data.getGameDrawable().size(); i++)
-			data.getGameDrawable().get(i).draw(g);
+		for (int i = 0; i < Data.getGameDrawable().size(); i++)
+			Data.getGameDrawable().get(i).draw(g);
 	}
 
 	@Override

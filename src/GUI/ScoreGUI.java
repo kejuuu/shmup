@@ -1,8 +1,8 @@
 package GUI;
 
 import utils.GameObject;
-import utils.constants;
-import utils.data;
+import utils.Constants;
+import utils.Data;
 
 import java.awt.*;
 
@@ -19,10 +19,10 @@ public class ScoreGUI extends GameObject
 
 	public ScoreGUI(int posX, int posY, boolean center) 
 	{
-		super(constants.EMPTY, 99);
+		super(Constants.EMPTY, 99);
 		try
 		{
-			pixelFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(constants.PIXELFONT));
+			pixelFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream(Constants.PIXELFONT));
 			pixelFont = pixelFont.deriveFont(Font.PLAIN, 96);
 		} catch (Exception e)
 		{
@@ -30,7 +30,7 @@ public class ScoreGUI extends GameObject
 		}
 		this.posX = posX;
 		this.posY = posY;
-		this.score = data.getSCORE();
+		this.score = Data.getSCORE();
 		this.text = "Score: " + String.valueOf(score);
 		this.center = center;
 
@@ -39,7 +39,7 @@ public class ScoreGUI extends GameObject
 	@Override
 	public void update()
 	{
-		this.score = data.getSCORE();
+		this.score = Data.getSCORE();
 		this.text = "Score: " + String.valueOf(score);
 	}
 

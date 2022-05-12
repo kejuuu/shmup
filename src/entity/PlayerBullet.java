@@ -1,10 +1,11 @@
-package Characters;
+package entity;
 
 import utils.PhysicsGameObject;
 
-public class EnemyBullet extends Bullet
+public class PlayerBullet extends Bullet
 {
-	public EnemyBullet(String path, int speed) {
+	public PlayerBullet(String path, int speed) 
+	{
 		super(path, speed, 2);
 	}
 
@@ -12,16 +13,15 @@ public class EnemyBullet extends Bullet
 	public void update()
 	{
 		super.update();
-		transform.positionY += speed;
+		transform.positionY -= speed;
 	}
 
 	@Override
 	public void onCollide(PhysicsGameObject collider)
 	{
-		if (collider.getClass().getSimpleName().equals("Player"))
+		if (collider.getClass().getSimpleName().equals("Enemy"))
 		{
 			destroy(this);
 		}
 	}
-
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.awt.image.*;
 
-public class data
+public class Data
 {
 	private static List<GameObject> gameDrawable = new ArrayList<GameObject>();
 	private static List<PhysicsGameObject> gameCollidables = new ArrayList<PhysicsGameObject>();
@@ -83,7 +83,7 @@ public class data
 
 	public static void setGameAnimatedSprites(List<AnimatedSprite> gameAnimatedSprites)
 	{
-		data.gameAnimatedSprites = gameAnimatedSprites;
+		Data.gameAnimatedSprites = gameAnimatedSprites;
 	}
 
 	public static Map<String, List<BufferedImage>> getCachedAnimatedSprite()
@@ -93,7 +93,7 @@ public class data
 
 	public static void setCachedAnimatedSprite(Map<String, List<BufferedImage>> cachedAnimatedSprite)
 	{
-		data.cachedAnimatedSprite = cachedAnimatedSprite;
+		Data.cachedAnimatedSprite = cachedAnimatedSprite;
 	}
 
 	public static List<GameObject> getGameDrawable()
@@ -103,7 +103,7 @@ public class data
 
 	public static void setGameDrawable(List<GameObject> gameDrawable)
 	{
-		data.gameDrawable = gameDrawable;
+		Data.gameDrawable = gameDrawable;
 	}
 
 	public static List<PhysicsGameObject> getGameCollidables()
@@ -113,6 +113,6 @@ public class data
 
 	public static void setGameCollidables(List<PhysicsGameObject> gameCollidables)
 	{
-		data.gameCollidables = gameCollidables;
+		Data.gameCollidables = gameCollidables;
 	}
 }

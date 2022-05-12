@@ -2,6 +2,8 @@ package utils;
 
 import java.awt.*;
 
+import GameFrame.GamePanel;
+
 
 public abstract class Collidable extends GameObject {
 
@@ -32,7 +34,10 @@ public abstract class Collidable extends GameObject {
         if(constants.DEBUG)
         {
             g.setColor(Color.blue);
-            g.drawRect(transform.positionX - width * 3 / 2, transform.positionY - height * 3 / 2, width * 3, height * 3);
+            g.drawRect(transform.positionX - width * 3 / 2 * GamePanel.getScreenWidth() / 1920, 
+            			transform.positionY - height * 3 / 2 * GamePanel.getScreenHeight() / 1080, 
+            			width * 3 * GamePanel.getScreenWidth() / 1920, 
+            			height * 3 * GamePanel.getScreenHeight() / 1080);
             g.drawString(getInfo(), transform.positionX - width * 3/2, transform.positionY + height*3);
             g.setColor(Color.black);
         }

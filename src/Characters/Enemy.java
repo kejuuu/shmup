@@ -4,9 +4,10 @@ import utils.Collidable;
 import utils.Transform;
 import utils.constants;
 import utils.data;
+import utils.Attackable;
 
 
-public class Enemy extends Collidable
+public class Enemy extends Collidable implements Attackable
 {
 	private int health = 5;
     private double fireRate = data.getENEMY1_FIRE_RATE(); // in milliseconds
@@ -53,8 +54,9 @@ public class Enemy extends Collidable
             fireRate = data.getENEMY1_FIRE_RATE();
         }
     }
-
-    private void fireBullet()
+    
+    @Override
+    public void fireBullet()
     {
         Bullet instance = new EnemyBullet(constants.ENEMY1_BULLET, 10);
         instance.transform.setPosition(

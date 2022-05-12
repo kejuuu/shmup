@@ -3,7 +3,6 @@ package screens;
 import java.awt.*;
 
 import Characters.Player;
-import Characters.PlayerBullet;
 import Characters.ShootParticle;
 import Characters.Spawner;
 import GUI.HeartGUI;
@@ -19,9 +18,6 @@ import utils.data;
 public class Level1 extends GameState
 {
 	private Player player;
-
-	private boolean isFiring = false;
-	private double fireRate = data.getPLAYER_FIRE_RATE(); // in milliseconds
 
 	public Level1(GameStateManager gsm) 
 	{
@@ -43,15 +39,7 @@ public class Level1 extends GameState
 		for (int i = 0; i < data.getGameAnimatedSprites().size(); i++)
 			data.getGameAnimatedSprites().get(i).update();
 
-		if (isFiring)
-		{
-			fireRate -= GamePanel.deltaTime();
-			if (fireRate <= 0)
-			{
-				firePlayerBullet();
-				fireRate = data.getPLAYER_FIRE_RATE();
-			}
-		}
+
 		data.addSCORE((int) (GamePanel.deltaTime() * 0.1));
 
 		if (player.getHealth() <= 0)
@@ -59,14 +47,6 @@ public class Level1 extends GameState
 			// Pergi ke state gameover
 			gsm.changeState(GameStateManager.GAMEOVER);
 		}
-	}
-
-	public void firePlayerBullet()
-	{
-		PlayerBullet instance = new PlayerBullet(constants.PLAYER_BULLET, 10);
-		instance.transform.setPosition(
-				player.transform.positionX + player.image.getWidth() / 2 - instance.image.getWidth() / 2,
-				player.transform.positionY - instance.image.getHeight());
 	}
 
 	public void draw(Graphics2D g)
@@ -80,11 +60,11 @@ public class Level1 extends GameState
 
 	public void mousePressed(int x, int y)
 	{
-		isFiring = true;
+		player.setFiring(true);
 	}
 
 	public void mouseReleased(int x, int y)
 	{
-		isFiring = false;
+		player.setFiring(false);
 	}
 }

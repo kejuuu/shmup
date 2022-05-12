@@ -2,17 +2,28 @@ package Characters;
 
 import utils.Collidable;
 import utils.Transform;
+import utils.Attackable;
+import utils.constants;
+import utils.data;
 
 import java.awt.MouseInfo;
 
-public class Player extends Collidable
+import GameFrame.GamePanel;
+
+public class Player extends Collidable implements Attackable
 {
 	private int health = 5;
+	private boolean isFiring = false;
+	private double fireRate = data.getPLAYER_FIRE_RATE(); // in milliseconds
 
-	public Player(String path, int health) 
-	{
+	public Player(String path, int health) {
 		super(path, 3);
 		this.health = health;
+	}
+
+	public void setFiring(boolean isFiring)
+	{
+		this.isFiring = isFiring;
 	}
 
 	public int getHealth()
@@ -29,6 +40,24 @@ public class Player extends Collidable
 	{
 		super.update();
 		transform.setPosition(MouseInfo.getPointerInfo().getLocation().x, MouseInfo.getPointerInfo().getLocation().y);
+		if (isFiring)
+		{
+			fireRate -= GamePanel.deltaTime();
+			if (fireRate <= 0)
+			{
+				fireBullet();
+				fireRate = data.getPLAYER_FIRE_RATE();
+			}
+		}
+	}
+
+	@Override
+	public void fireBullet()
+	{
+		PlayerBullet instance = new PlayerBullet(constants.PLAYER_BULLET, 10);
+		instance.transform.setPosition(transform.positionX + image.getWidth() / 2 - 15,
+				transform.positionY - instance.image.getHeight());
+
 	}
 
 	@Override

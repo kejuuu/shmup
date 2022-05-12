@@ -18,8 +18,7 @@ public class GameOver extends GameState
 	private final PlayAgainButton playAgainButton;
 	private final MainmenuButton mainMenuButton;
 
-	public GameOver(GameStateManager gsm) 
-	{
+	public GameOver(GameStateManager gsm) {
 		this.gsm = gsm;
 		new ScoreGUI((int) (GamePanel.getScreenWidth() / 2),
 				GamePanel.getScreenHeight() - (int) (GamePanel.getScreenHeight() / 2) + 50, true);

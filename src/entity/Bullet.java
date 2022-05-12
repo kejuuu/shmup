@@ -6,7 +6,7 @@ import GameFrame.GamePanel;
 public abstract class Bullet extends PhysicsGameObject
 {
     protected int speed;
-
+    
     public Bullet(String path, int speed, int zIndex) 
     {
         super(path, zIndex);
@@ -17,7 +17,7 @@ public abstract class Bullet extends PhysicsGameObject
     {
         super.update();
         
-        if(transform.positionY < 0 || transform.positionY > GamePanel.getScreenHeight())
+        if(transform.getPositionX() < 0 || transform.getPositionY() > GamePanel.getScreenHeight())
             destroy(this);
     }
 

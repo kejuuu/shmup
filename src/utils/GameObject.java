@@ -8,16 +8,15 @@ import GameFrame.GamePanel;
 
 public abstract class GameObject
 {
-	public BufferedImage image;
-	public Transform transform = new Transform();
+	public final Transform transform = new Transform();
+	protected BufferedImage image;
 	protected int width;
 	protected int height;
-	public int zIndex;
+	protected int zIndex;
 
 	protected String imagePath;
 
-	public GameObject(String path, int zIndex) 
-	{
+	public GameObject(String path, int zIndex) {
 		try
 		{
 			image = ImageIO.read(getClass().getResource(path));
@@ -35,15 +34,15 @@ public abstract class GameObject
 
 	public void draw(Graphics2D g)
 	{
-		double rotationRequired = Math.toRadians(transform.rotation);
+		double rotationRequired = Math.toRadians(transform.getRotation());
 		double locationX = image.getWidth() / 2;
 		double locationY = image.getHeight() / 2;
 
 		AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 
-		g.drawImage(op.filter(image, null), transform.positionX - width * 3 / 2 * GamePanel.getScreenWidth() / 1920,
-				transform.positionY - height * 3 / 2 * GamePanel.getScreenHeight() / 1080,
+		g.drawImage(op.filter(image, null), transform.getPositionX() - width * 3 / 2 * GamePanel.getScreenWidth() / 1920,
+				transform.getPositionY() - height * 3 / 2 * GamePanel.getScreenHeight() / 1080,
 				width * 3 * GamePanel.getScreenWidth() / 1920, height * 3 * GamePanel.getScreenHeight() / 1080, null);
 
 	}
@@ -60,6 +59,11 @@ public abstract class GameObject
 	public String getInfo()
 	{
 		return imagePath;
+	}
+	
+	public BufferedImage getImage()
+	{
+		return image;
 	}
 
 	public static GameObject find(String className)

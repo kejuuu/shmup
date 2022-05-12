@@ -12,7 +12,7 @@ public class EnemyBullet extends Bullet
 	public void update()
 	{
 		super.update();
-		transform.positionY += speed;
+		transform.setPositionY(transform.getPositionY() + speed);
 	}
 
 	@Override

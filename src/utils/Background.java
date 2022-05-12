@@ -17,22 +17,23 @@ public class Background extends GameObject
 	@Override
 	public void update()
 	{
-		transform.positionY += scrollSpeed;
+		transform.setPositionY(transform.getPositionY() + scrollSpeed);
 	}
 
 	// Menggambar background dan melakukan looping jika background melebihi layar
+	@Override
 	public void draw(Graphics2D g)
 	{
-		g.drawImage(image, transform.positionX, transform.positionY, GamePanel.getScreenWidth(),
+		g.drawImage(image, transform.getPositionX(), transform.getPositionY(), GamePanel.getScreenWidth(),
 				GamePanel.getScreenHeight(), null);
 
-		if (transform.positionY >= 0)
+		if (transform.getPositionY()>= 0)
 		{
-			g.drawImage(image, 0, transform.positionY - GamePanel.getScreenHeight(), GamePanel.getScreenWidth(),
+			g.drawImage(image, 0, transform.getPositionY()- GamePanel.getScreenHeight(), GamePanel.getScreenWidth(),
 					GamePanel.getScreenHeight(), null);
-			if (transform.positionY - GamePanel.getScreenHeight() >= 0)
+			if (transform.getPositionY() - GamePanel.getScreenHeight() >= 0)
 			{
-				transform.positionY = 0;
+				transform.setPositionY(0);
 			}
 		}
 	}

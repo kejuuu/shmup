@@ -15,7 +15,7 @@ public class Constants
 	public static String EXITBUTTON = "/GUI/exitButton.png";
 	public static String PLAYAGAINBUTTON = "/GUI/PlayagainButton.png";
 	public static String MAINMENUBUTTON = "/GUI/MainmenuButton.png";
-	public static Boolean DEBUG = true;
+	public static Boolean DEBUG = false;
 
 	public static String[] SHOOT_PARTICLE = { "/Particle/Shootparticle/part__0.png",
 			"/Particle/Shootparticle/part__1.png", "/Particle/Shootparticle/part__2.png",

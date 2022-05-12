@@ -9,9 +9,9 @@ import java.awt.geom.AffineTransform;
 
 public class AnimatedSprite
 {
+	public Transform transform = new Transform();
 	private int currentFrame = 0;
 	private int frameCount = 0;
-	public Transform transform = new Transform();
 	private int width;
 	private int height;
 	private List<BufferedImage> frames = new ArrayList<BufferedImage>();
@@ -51,15 +51,15 @@ public class AnimatedSprite
 
 	public void draw(Graphics2D g)
 	{
-		double rotationRequired = Math.toRadians(transform.rotation);
+		double rotationRequired = Math.toRadians(transform.getRotation());
 		double locationX = frames.get(0).getWidth() / 2;
 		double locationY = frames.get(0).getHeight() / 2;
 
 		AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
 
-		g.drawImage(op.filter(frames.get(currentFrame), null), transform.positionX - width * 3 / 2,
-				transform.positionY - height * 3 / 2, width * 3, height * 3, null);
+		g.drawImage(op.filter(frames.get(currentFrame), null), transform.getPositionX() - width * 3 / 2,
+				transform.getPositionY() - height * 3 / 2, width * 3, height * 3, null);
 	}
 
 }

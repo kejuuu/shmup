@@ -2,5 +2,5 @@ package utils;
 
 public interface Attackable
 {
-	public void fireBullet();
+	public abstract void fireBullet();
 }

@@ -17,7 +17,7 @@ import utils.Data;
 
 public class Level1 extends GameState
 {
-	private PlayerShip player;
+	private final PlayerShip player;
 
 	public Level1(GameStateManager gsm) 
 	{

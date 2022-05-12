@@ -48,15 +48,16 @@ public class Menu extends GameState
 	}
 
 	@Override
-	public void mouseReleased(int x, int y)
+	public void update()
 	{
-
+		for (int i = 0; i < Data.getGameDrawable().size(); i++)
+			Data.getGameDrawable().get(i).update();
 	}
 
 	@Override
-	public void update()
+	public void mouseReleased(int x, int y)
 	{
-
+		
 	}
 
 }

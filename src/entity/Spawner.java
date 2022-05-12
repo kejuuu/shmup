@@ -32,7 +32,7 @@ public class Spawner extends GameObject
 		}
 	}
 
-	public void spawn()
+	private void spawn()
 	{
 		Random rng = new Random();
 		int x = rng.nextInt(GamePanel.getScreenWidth() - width);

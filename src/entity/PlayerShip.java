@@ -10,30 +10,18 @@ import java.awt.MouseInfo;
 
 import GameFrame.GamePanel;
 
-public class PlayerShip extends PhysicsGameObject implements Attackable
+public class PlayerShip extends Ship implements Attackable
 {
-	private int health = 5;
 	private boolean isFiring = false;
-	private double fireRate = Data.getPLAYER_FIRE_RATE(); // in milliseconds
 
 	public PlayerShip(String path, int health) {
-		super(path, 3);
+		super(path, 3, Data.getPLAYER_FIRE_RATE());
 		this.health = health;
 	}
 
 	public void setFiring(boolean isFiring)
 	{
 		this.isFiring = isFiring;
-	}
-
-	public int getHealth()
-	{
-		return health;
-	}
-
-	public void setHealth(int health)
-	{
-		this.health = health;
 	}
 
 	public void update()
@@ -55,8 +43,8 @@ public class PlayerShip extends PhysicsGameObject implements Attackable
 	public void fireBullet()
 	{
 		PlayerBullet instance = new PlayerBullet(Constants.PLAYER_BULLET, 10);
-		instance.transform.setPosition(transform.positionX + image.getWidth() / 2 - 15,
-				transform.positionY - instance.image.getHeight());
+		instance.transform.setPosition(transform.getPositionX() + image.getWidth() / 2 - 15,
+				transform.getPositionY() - instance.getImage().getHeight());
 
 	}
 
@@ -69,9 +57,13 @@ public class PlayerShip extends PhysicsGameObject implements Attackable
 		} else if (collider.getClass().getSimpleName().equals("EnemyShip"))
 		{
 			health--;
-			Transform particleLoc = new Transform(transform.positionX + image.getWidth() / 2,
-					transform.positionY + image.getHeight() / 2, 0);
+			Transform particleLoc = new Transform(transform.getPositionX() + image.getWidth() / 2,
+					transform.getPositionY() + image.getHeight() / 2, 0);
 			new ShootParticle(particleLoc);
+
+		}
+		if (collider != null && !collider.getClass().getSimpleName().equals("PlayerBullet"))
+		{
 			destroy(collider);
 		}
 		if (health <= 0)

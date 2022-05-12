@@ -2,10 +2,10 @@ package utils;
 
 public class Transform
 {
-	public int positionX = 0;
-	public int positionY = 0;
+	private int positionX = 0;
+	private int positionY = 0;
 
-	public int rotation = 0;
+	private int rotation = 0;
 
 	public Transform() {
 		positionX = 0;
@@ -28,5 +28,25 @@ public class Transform
 	public void setRotation(int rotation)
 	{
 		this.rotation = rotation;
+	}
+	
+	public int getPositionX()
+	{
+		return positionX;
+	}
+
+	public void setPositionY(int y)
+	{
+		this.positionY = y;
+	}
+	
+	public int getPositionY()
+	{
+		return positionY;
+	}
+
+	public int getRotation()
+	{
+		return rotation;
 	}
 }

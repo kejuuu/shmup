@@ -7,7 +7,7 @@ import utils.Data;
 public class MainmenuButton extends Button
 {
 
-	private GameStateManager gsm;
+	final private GameStateManager gsm;
 
 	public MainmenuButton(int posX, int posY, GameStateManager gsm) 
 	{

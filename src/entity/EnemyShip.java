@@ -7,20 +7,22 @@ import utils.Data;
 import utils.Attackable;
 
 
-public class EnemyShip extends PhysicsGameObject implements Attackable
+public class EnemyShip extends Ship implements Attackable
 {
 	private int health = 5;
-    private double fireRate = Data.getENEMY1_FIRE_RATE(); // in milliseconds
     private float speed;
+    
+	public EnemyShip(String path, int health) 
+    {
+        super(path, 3, Data.getENEMY1_FIRE_RATE());
+        this.transform.setRotation(180);
+        this.health = health;
+        this.speed = 1;
+    }
 
     public int getHealth()
 	{
 		return health;
-	}
-
-	public void setHealth(int health)
-	{
-		this.health = health;
 	}
 	
 	public float getSpeed()
@@ -33,21 +35,13 @@ public class EnemyShip extends PhysicsGameObject implements Attackable
 		this.speed = speed;
 	}
 
-	public EnemyShip(String path, int health) 
-    {
-        super(path, 3);
-        this.transform.rotation = 180;
-        this.health = health;
-        this.speed = 1;
-    }
-
     @Override
     public void update()
     {
         super.update();
-        if(transform.positionY > GamePanel.getScreenHeight() + image.getHeight() * 3 / 2)
+        if(transform.getPositionY() > GamePanel.getScreenHeight() + image.getHeight() * 3 / 2)
             destroy(this);
-        transform.positionY += speed;
+        transform.setPositionY((int)(transform.getPositionY() + speed));
 
         fireRate -= GamePanel.deltaTime();
         if (fireRate <= 0)
@@ -62,9 +56,9 @@ public class EnemyShip extends PhysicsGameObject implements Attackable
     {
         Bullet instance = new EnemyBullet(Constants.ENEMY1_BULLET, 10);
         instance.transform.setPosition(
-                transform.positionX + image.getWidth() / 2 - 15,
-                transform.positionY + image.getHeight());
-        instance.transform.rotation = 180;
+                transform.getPositionX() + image.getWidth() / 2 - 15,
+                transform.getPositionY() + image.getHeight());
+        instance.transform.setRotation(180);
         instance.speed = (int)(this.speed + 8);
     }
 
@@ -76,11 +70,11 @@ public class EnemyShip extends PhysicsGameObject implements Attackable
             health--;
             destroy(collider);
             
-            Transform particleLoc = new Transform(transform.positionX + image.getWidth() / 2, transform.positionY + image.getHeight() / 2, 0);
+            Transform particleLoc = new Transform(transform.getPositionX() + image.getWidth() / 2, transform.getPositionY() + image.getHeight() / 2, 0);
             new ShootParticle(particleLoc);
             if(health <= 0)
             {
-            	Data.addSCORE(100);
+            	Data.addSCORE(500);
                 destroy(this);
             }
 		}

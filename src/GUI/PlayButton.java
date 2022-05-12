@@ -4,7 +4,7 @@ import states.GameStateManager;
 
 public class PlayButton extends Button
 {
-	private GameStateManager gsm;
+	final private GameStateManager gsm;
 
 	public PlayButton(String path, int posX, int posY, GameStateManager gsm) 
 	{

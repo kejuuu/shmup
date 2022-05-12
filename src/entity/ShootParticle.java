@@ -12,8 +12,8 @@ public class ShootParticle extends AnimatedSprite
 	{
 		super("shootParticle", Constants.SHOOT_PARTICLE, 31, transform);
 		Transform t = new Transform();
-		t.setPosition(transform.positionX, transform.positionY);
-		t.rotation = new Random().nextInt(360);
+		t.setPosition(transform.getPositionX(), transform.getPositionY());
+		t.setRotation(new Random().nextInt(360));
 		this.transform = t;
 	}
 }

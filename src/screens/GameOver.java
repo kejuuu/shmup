@@ -59,6 +59,6 @@ public class GameOver extends GameState
 	@Override
 	public void mouseReleased(int x, int y)
 	{
-
 	}
+
 }

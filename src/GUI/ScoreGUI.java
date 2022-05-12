@@ -13,6 +13,7 @@ public class ScoreGUI extends GameObject
 	private int score;
 	private String text;
 	private boolean center;
+	private boolean boost;
 
 	private int posX;
 	private int posY;
@@ -55,12 +56,9 @@ public class ScoreGUI extends GameObject
 		}
 		g.setColor(Color.black);
 		if (center)
-		{
 			g.drawString(text, (int) (posX - g.getFontMetrics(pixelFont).stringWidth(text) / 2), posY);
-		} else
-		{
+		else
 			g.drawString(text, posX, posY);
-		}
 		g.setColor(Color.black);
 		g.setFont(Font.decode(null));
 	}

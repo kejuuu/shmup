@@ -7,7 +7,7 @@ import utils.Data;
 public class PlayAgainButton extends Button
 {
 
-	private GameStateManager gsm;
+	final private GameStateManager gsm;
 
 	public PlayAgainButton(int posX, int posY, GameStateManager gsm) 
 	{

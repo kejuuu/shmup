@@ -19,9 +19,7 @@ public abstract class PhysicsGameObject extends GameObject
 			if (Data.getGameCollidables().get(i) == this)
 				continue;
 			if (Collision.checkCollision(this, Data.getGameCollidables().get(i)))
-			{
 				onCollide(Data.getGameCollidables().get(i));
-			}
 		}
 	}
 
@@ -33,11 +31,11 @@ public abstract class PhysicsGameObject extends GameObject
 		if (Constants.DEBUG)
 		{
 			g.setColor(Color.blue);
-			g.drawRect(transform.positionX - width * 3 / 2 * GamePanel.getScreenWidth() / 1920,
-					transform.positionY - height * 3 / 2 * GamePanel.getScreenHeight() / 1080,
+			g.drawRect(transform.getPositionX() - width * 3 / 2 * GamePanel.getScreenWidth() / 1920,
+					transform.getPositionY() - height * 3 / 2 * GamePanel.getScreenHeight() / 1080,
 					width * 3 * GamePanel.getScreenWidth() / 1920, height * 3 * GamePanel.getScreenHeight() / 1080);
-			g.drawString(getInfo(), transform.positionX - width * 3 / 2 * GamePanel.getScreenWidth() / 1920,
-					transform.positionY + height * 3 * GamePanel.getScreenHeight() / 1080);
+			g.drawString(getInfo(), transform.getPositionX() - width * 3 / 2 * GamePanel.getScreenWidth() / 1920,
+					transform.getPositionY() + height * 3 * GamePanel.getScreenHeight() / 1080);
 			g.setColor(Color.black);
 		}
 	}

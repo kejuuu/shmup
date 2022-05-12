@@ -6,30 +6,30 @@ import java.util.List;
 import java.util.Map;
 import java.awt.image.*;
 
-public class data 
+public class data
 {
 	private static List<GameObject> gameDrawable = new ArrayList<GameObject>();
-    private static List<Collidable> gameCollidables = new ArrayList<Collidable>();
-    private static List<AnimatedSprite> gameAnimatedSprites = new ArrayList<AnimatedSprite>();
-    
-    private static Map<String, List<BufferedImage>> cachedAnimatedSprite = new HashMap<String, List<BufferedImage>>();
+	private static List<Collidable> gameCollidables = new ArrayList<Collidable>();
+	private static List<AnimatedSprite> gameAnimatedSprites = new ArrayList<AnimatedSprite>();
 
-    private static int WAVE = 1;
-    private static int SCORE = 0;
+	private static Map<String, List<BufferedImage>> cachedAnimatedSprite = new HashMap<String, List<BufferedImage>>();
 
-    private static double PLAYER_FIRE_RATE = 100;
-    private static double ENEMY1_FIRE_RATE = 1200;
+	private static int WAVE = 1;
+	private static int SCORE = 0;
 
-    public static void addObject(GameObject object)
-    {
-        if(object instanceof Collidable)
-            gameCollidables.add((Collidable)object);
-        
-        gameDrawable.add(object);
+	private static double PLAYER_FIRE_RATE = 100;
+	private static double ENEMY1_FIRE_RATE = 1200;
 
-        //sort the objects by zIndex
-        gameDrawable.sort((o1, o2) -> o1.zIndex - o2.zIndex);
-    }
+	public static void addObject(GameObject object)
+	{
+		if (object instanceof Collidable)
+			gameCollidables.add((Collidable) object);
+
+		gameDrawable.add(object);
+
+		// sort the objects by zIndex
+		gameDrawable.sort((o1, o2) -> o1.zIndex - o2.zIndex);
+	}
 
 	public static double getPLAYER_FIRE_RATE()
 	{
@@ -70,6 +70,7 @@ public class data
 	{
 		SCORE += sCORE;
 	}
+
 	public static void setSCORE(int sCORE)
 	{
 		SCORE = sCORE;

@@ -7,18 +7,19 @@ import utils.data;
 public class PlayAgainButton extends Button
 {
 
-    private GameStateManager gsm;
+	private GameStateManager gsm;
 
-    public PlayAgainButton(int posX, int posY, GameStateManager gsm) {
-        super(constants.PLAYAGAINBUTTON, posX, posY);
-        this.gsm = gsm;
-    }
+	public PlayAgainButton(int posX, int posY, GameStateManager gsm) 
+	{
+		super(constants.PLAYAGAINBUTTON, posX, posY);
+		this.gsm = gsm;
+	}
 
-    @Override
-    public void onClick()
-    {
-        data.setSCORE(0);
-        gsm.changeState(GameStateManager.LEVEL1);
-    }
+	@Override
+	public void onClick()
+	{
+		data.setSCORE(0);
+		gsm.changeState(GameStateManager.LEVEL1);
+	}
 
 }

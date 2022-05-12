@@ -24,24 +24,24 @@ public class GameStateManager
 		currentState = MENU;
 		states.put(MENU, new Menu(this));
 	}
-	
-	public void changeState(int state) 
+
+	public void changeState(int state)
 	{
 		data.getGameDrawable().clear();
 		data.getGameCollidables().clear();
-		
-		switch (state) 
+
+		switch (state)
 		{
-			case MENU:
+		case MENU:
 			states.put(MENU, new Menu(this));
 			break;
-			case LEVEL1:
+		case LEVEL1:
 			states.put(LEVEL1, new Level1(this));
 			break;
-			case GAMEOVER:
+		case GAMEOVER:
 			states.put(GAMEOVER, new GameOver(this));
 			break;
-			default:
+		default:
 			break;
 		}
 		states.remove(currentState);
@@ -49,7 +49,6 @@ public class GameStateManager
 		currentState = state;
 
 	}
-
 
 	public void update()
 	{

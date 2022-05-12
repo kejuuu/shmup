@@ -9,58 +9,57 @@ import java.awt.geom.AffineTransform;
 
 public class AnimatedSprite
 {
-    private int currentFrame = 0;
-    private int frameCount = 0;
-    public Transform transform = new Transform();
-    private int width;
-    private int height;
-    private List<BufferedImage> frames = new ArrayList<BufferedImage>();
+	private int currentFrame = 0;
+	private int frameCount = 0;
+	public Transform transform = new Transform();
+	private int width;
+	private int height;
+	private List<BufferedImage> frames = new ArrayList<BufferedImage>();
 
-    public AnimatedSprite(String spriteName, String[] spritePaths, int frameCount, Transform transform) {
-        if (!data.getCachedAnimatedSprite().containsKey(spriteName))
-        {
-            for (int i = 0; i < spritePaths.length; i++)
-            {
-                try
-                {
-                    frames.add(ImageIO.read(getClass().getResource(spritePaths[i])));
-                } catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
-            }
-            data.getCachedAnimatedSprite().put(spriteName, frames);
-        } 
-        else
-        {
-            frames = data.getCachedAnimatedSprite().get(spriteName);
-        }
+	public AnimatedSprite(String spriteName, String[] spritePaths, int frameCount, Transform transform) {
+		if (!data.getCachedAnimatedSprite().containsKey(spriteName))
+		{
+			for (int i = 0; i < spritePaths.length; i++)
+			{
+				try
+				{
+					frames.add(ImageIO.read(getClass().getResource(spritePaths[i])));
+				} catch (Exception e)
+				{
+					e.printStackTrace();
+				}
+			}
+			data.getCachedAnimatedSprite().put(spriteName, frames);
+		} else
+		{
+			frames = data.getCachedAnimatedSprite().get(spriteName);
+		}
 
-        this.frameCount = frameCount;
-        this.transform = transform;
-        width = frames.get(0).getWidth();
-        height = frames.get(0).getHeight();
-        data.getGameAnimatedSprites().add(this);
-    }
+		this.frameCount = frameCount;
+		this.transform = transform;
+		width = frames.get(0).getWidth();
+		height = frames.get(0).getHeight();
+		data.getGameAnimatedSprites().add(this);
+	}
 
-    public void update()
-    {
-        currentFrame++;
-        if (currentFrame >= frameCount)
-            data.getGameAnimatedSprites().remove(this);
-    }
+	public void update()
+	{
+		currentFrame++;
+		if (currentFrame >= frameCount)
+			data.getGameAnimatedSprites().remove(this);
+	}
 
-    public void draw(Graphics2D g)
-    {
-        double rotationRequired = Math.toRadians(transform.rotation);
-        double locationX = frames.get(0).getWidth() / 2;
-        double locationY = frames.get(0).getHeight() / 2;
+	public void draw(Graphics2D g)
+	{
+		double rotationRequired = Math.toRadians(transform.rotation);
+		double locationX = frames.get(0).getWidth() / 2;
+		double locationY = frames.get(0).getHeight() / 2;
 
-        AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
-        AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+		AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
 
-        g.drawImage(op.filter(frames.get(currentFrame), null), transform.positionX - width * 3 / 2,
-                transform.positionY - height * 3 / 2, width * 3, height * 3, null);
-    }
+		g.drawImage(op.filter(frames.get(currentFrame), null), transform.positionX - width * 3 / 2,
+				transform.positionY - height * 3 / 2, width * 3, height * 3, null);
+	}
 
 }

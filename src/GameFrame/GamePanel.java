@@ -14,24 +14,21 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 	 * 
 	 */
 	private static final long serialVersionUID = 643646138463852373L;
-	
-	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	private static final int SCREEN_WIDTH = (int)screenSize.getWidth();
-	private static final int SCREEN_HEIGHT = (int)screenSize.getHeight();
-	private static final int SCALE = 1;
-	
 
+	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	private static final int SCREEN_WIDTH = (int) screenSize.getWidth();
+	private static final int SCREEN_HEIGHT = (int) screenSize.getHeight();
+	private static final int SCALE = 1;
 
 	private Thread thread;
 	private boolean running;
 	private static int FPS = 60;
 	private static long tpf = 1000 / FPS;
-	
+
 	public static long deltaTime()
 	{
 		return tpf;
 	}
-	
 
 	private BufferedImage image;
 	private Graphics2D g;
@@ -171,6 +168,5 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 	{
 		return SCALE;
 	}
-
 
 }

@@ -79,6 +79,6 @@ public class Enemy extends Collidable
             	data.addSCORE(100);
                 destroy(this);
             }
-        }
-    }
+		}
+	}
 }

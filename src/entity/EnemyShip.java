@@ -45,6 +45,8 @@ public class EnemyShip extends PhysicsGameObject implements Attackable
     public void update()
     {
         super.update();
+        if(transform.positionY > GamePanel.getScreenHeight() + image.getHeight() * 3 / 2)
+            destroy(this);
         transform.positionY += speed;
 
         fireRate -= GamePanel.deltaTime();

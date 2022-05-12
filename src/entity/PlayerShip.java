@@ -66,7 +66,7 @@ public class PlayerShip extends PhysicsGameObject implements Attackable
 		if (collider.getClass().getSimpleName().equals("EnemyBullet"))
 		{
 			health--;
-		} else if (collider.getClass().getSimpleName().equals("Enemy"))
+		} else if (collider.getClass().getSimpleName().equals("EnemyShip"))
 		{
 			health--;
 			Transform particleLoc = new Transform(transform.positionX + image.getWidth() / 2,

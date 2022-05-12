@@ -23,7 +23,7 @@ public class HeartGUI extends GameObject
 		super(path, 99);
 		this.posX = posX;
 		this.posY = posY;
-		player = (PlayerShip) GameObject.find("Player");
+		player = (PlayerShip) GameObject.find("PlayerShip");
 		this.transform.setPosition(posX + width, posY - height - 50);
 		try
 		{

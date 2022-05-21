@@ -33,14 +33,14 @@ public class Level1 extends GameState
 
 	public void update()
 	{
-		for (int i = 0; i < Data.getGameDrawable().size(); i++)
-			Data.getGameDrawable().get(i).update();
+		for (int i = 0; i < Data.gameDrawable.size(); i++)
+			Data.gameDrawable.get(i).update();
 
-		for (int i = 0; i < Data.getGameAnimatedSprites().size(); i++)
-			Data.getGameAnimatedSprites().get(i).update();
+		for (int i = 0; i < Data.gameAnimatedSprites.size(); i++)
+			Data.gameAnimatedSprites.get(i).update();
 
 
-		Data.addSCORE((int) (GamePanel.deltaTime() * 0.1));
+		Data.SCORE += GamePanel.deltaTime() * 0.1;
 
 		if (player.getHealth() <= 0)
 		{
@@ -51,11 +51,11 @@ public class Level1 extends GameState
 
 	public void draw(Graphics2D g)
 	{
-		for (int i = 0; i < Data.getGameDrawable().size(); i++)
-			Data.getGameDrawable().get(i).draw(g);
+		for (int i = 0; i < Data.gameDrawable.size(); i++)
+			Data.gameDrawable.get(i).draw(g);
 
-		for (int i = 0; i < Data.getGameAnimatedSprites().size(); i++)
-			Data.getGameAnimatedSprites().get(i).draw(g);
+		for (int i = 0; i < Data.gameAnimatedSprites.size(); i++)
+			Data.gameAnimatedSprites.get(i).draw(g);
 	}
 
 	public void mousePressed(int x, int y)

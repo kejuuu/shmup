@@ -25,6 +25,12 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 	private static int FPS = 60;
 	private static long tpf = 1000 / FPS;
 
+	/**
+	 * Get the game's deltaTime,
+	 * this will be used to calculate the time between frames
+	 * and create framerate independent movement of objects
+	 * @return the time passed between two frames 
+	 */
 	public static long deltaTime()
 	{
 		return tpf;
@@ -32,9 +38,11 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 
 	private BufferedImage image;
 	private Graphics2D g;
-
 	private GameStateManager gsm;
 
+	/**
+	 * Create a new fullscreen gamepanel and request focus to this panel
+	 */
 	GamePanel() 
 	{
 		super();
@@ -45,6 +53,9 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 		requestFocus();
 	}
 
+	/**
+	 * create a new thread, add input listener to it.
+	 */
 	public void addNotify()
 	{
 		super.addNotify();
@@ -57,6 +68,10 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 		}
 	}
 
+	/**
+	 * Buffer an image to the screen, and set the running to true.
+	 * also create a gamestatemanager to manage the gameState
+	 */
 	private void init()
 	{
 		image = new BufferedImage(SCREEN_WIDTH, SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -66,6 +81,10 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 		gsm = new GameStateManager();
 	}
 
+	/**
+	 * get the graphics context and draw the image
+	 * also disposes the graphic context and release the unused memory
+	 */
 	private void drawToScreen()
 	{
 		Graphics g2 = getGraphics();
@@ -73,6 +92,11 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 		g2.dispose();
 	}
 
+	/**
+	 * run the thread every single frame
+	 * to create framerate independent movement of objects
+	 * the thread has to be delayed so that each frame runs for the same amount of time
+	 */
 	public void run()
 	{
 		init();
@@ -89,39 +113,51 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 			drawToScreen();
 			elapsed = System.nanoTime() - start;
 			wait = tpf - (elapsed / 1000000);
+
+			// this code delays the frame so that it runs at the same speed regardless of the framerate
 			try
 			{
 				if (wait < 1)
 					Thread.sleep(1);
 				else
 					Thread.sleep(wait);
-			} catch (Exception e)
+			} 
+			catch (Exception e)
 			{
 				e.printStackTrace();
 			}
 		}
 	}
 
+	/**
+	 * updates the gameStateManager
+	 */
 	private void update()
 	{
 		gsm.update();
 	}
 
+	/**
+	 * draw the gameStateManager's graphics
+	 */
 	private void draw()
 	{
 		gsm.draw(g);
 	}
 
-	public void keyTyped(KeyEvent k)
-	{
-
-	}
-
+	/**
+	 * Event listener to the event of the mouse being pressed
+	 * @param m the mouse event
+	 */
 	public void mousePressed(MouseEvent m)
 	{
 		gsm.mousePressed(m.getX(), m.getY());
 	}
 
+	/**
+	 * Event listener to the event of the mouse being released
+	 * @param m the mouse event
+	 */
 	public void mouseReleased(MouseEvent m)
 	{
 		gsm.mouseReleased(m.getX(), m.getY());
@@ -141,21 +177,34 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 	{
 	}
 
+	/**
+	 * get the current device screen size
+	 * @return the current device screen size
+	 */
 	public static Dimension getScreensize()
 	{
 		return screenSize;
 	}
 
+	/**
+	 * get the current device screen width
+	 */
 	public static int getScreenWidth()
 	{
 		return SCREEN_WIDTH;
 	}
 
+	/**
+	 * get the current device screen height
+	 */
 	public static int getScreenHeight()
 	{
 		return SCREEN_HEIGHT;
 	}
 
+	/**
+	 * get the current device screen scale
+	 */
 	public static int getScale()
 	{
 		return SCALE;

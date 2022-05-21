@@ -1,6 +1,6 @@
 package utils;
 
-public interface Attackable
+public interface ShootImpl
 {
 	public abstract void fireBullet();
 }

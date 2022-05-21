@@ -4,37 +4,60 @@ import utils.PhysicsGameObject;
 import utils.Transform;
 import utils.Constants;
 import utils.Data;
-import utils.Attackable;
+import utils.ShootImpl;
 
 
-public class EnemyShip extends Ship implements Attackable
+public class EnemyShip extends Ship implements ShootImpl
 {
 	private int health = 5;
     private float speed;
     
+    /**
+    * Create an enemy ship with a given health
+    * @param  path   The path to the image of the enemy ship
+    * @param  health The health of the enemy ship
+    */
 	public EnemyShip(String path, int health) 
     {
-        super(path, 3, Data.getENEMY1_FIRE_RATE());
+        super(path, 3, Data.ENEMY1_FIRE_RATE);
         this.transform.setRotation(180);
         this.health = health;
         this.speed = 1;
     }
 
+    /**
+     * Get the enemy ship's current health
+     * @return The enemy ship's current health
+     */
     public int getHealth()
 	{
 		return health;
 	}
 	
+    /**
+     * Get the enemy ship's current speed
+     * @return The enemy ship's current speed
+     */
 	public float getSpeed()
 	{
 		return speed;
 	}
 
+    /**
+     * Set the enemy ship's current speed
+     * @param speed New enemy ship speed value
+     */
 	public void setSpeed(float speed)
 	{
 		this.speed = speed;
 	}
 
+
+    /**
+     * This method is called once every frame.
+     * send the enemy ship flying to the bottom of the screen (increasing speed)
+     * construct an enemyBullet every couple of seconds (based on deltaTime)
+     */
     @Override
     public void update()
     {
@@ -47,10 +70,15 @@ public class EnemyShip extends Ship implements Attackable
         if (fireRate <= 0)
         {
             fireBullet();
-            fireRate = Data.getENEMY1_FIRE_RATE();
+            fireRate = Data.ENEMY1_FIRE_RATE;
         }
     }
     
+
+    /**
+     * This method is called when the enemy ship bullet Timer is destroyed
+     * Creates a new enemy bullet and adds it to the game
+     */
     @Override
     public void fireBullet()
     {
@@ -62,6 +90,11 @@ public class EnemyShip extends Ship implements Attackable
         instance.speed = (int)(this.speed + 8);
     }
 
+
+    /**
+     * Checks if the enemy ship collides with the player
+     * @param collider 		the object that the enemy ship collided with
+     */
     @Override
     public void onCollide(PhysicsGameObject collider)
     {
@@ -74,7 +107,7 @@ public class EnemyShip extends Ship implements Attackable
             new ShootParticle(particleLoc);
             if(health <= 0)
             {
-            	Data.addSCORE(500);
+            	Data.SCORE += 500;
                 destroy(this);
             }
 		}

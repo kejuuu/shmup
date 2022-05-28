@@ -18,6 +18,11 @@ public class HeartGUI extends GameObject
 	private int posX;
 	private int posY;
 
+	/**
+	 * Create a HeartGUI to display the remaining health the player has to the given position
+	 * @param posX is the horizontal position
+	 * @param posY is the vertical position
+	 */
 	public HeartGUI(String path, int posX, int posY) 
 	{
 		super(path, 99);
@@ -41,6 +46,9 @@ public class HeartGUI extends GameObject
 		this.health = player.getHealth();
 	}
 
+	/**
+	 * Create the HeartGUI to the given position according to the health value of the player
+	 */
 	public void draw(Graphics2D g)
 	{
 		super.draw(g);

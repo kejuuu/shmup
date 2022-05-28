@@ -19,6 +19,11 @@ public class Level1 extends GameState
 {
 	private final PlayerShip player;
 
+	
+	/**
+	 * Start the game and display the Level1 Screen
+	 * with a 0 player score
+	 */
 	public Level1(GameStateManager gsm) 
 	{
 		this.gsm = gsm;
@@ -31,6 +36,10 @@ public class Level1 extends GameState
 		new ScoreGUI(10, 50, false);
 	}
 
+	/**
+	 * Update assets and images visible on the screen during the game
+	 * If player health is less than 0, then set the state to GAMEOVER
+	 */
 	public void update()
 	{
 		for (int i = 0; i < Data.gameDrawable.size(); i++)
@@ -58,11 +67,17 @@ public class Level1 extends GameState
 			Data.gameAnimatedSprites.get(i).draw(g);
 	}
 
+	/**
+	 * If mouse was pressed, then set the firing value to true
+	 */
 	public void mousePressed(int x, int y)
 	{
 		player.setFiring(true);
 	}
 
+	/**
+	 * If mouse is released, then set the firing value to false
+	 */
 	public void mouseReleased(int x, int y)
 	{
 		player.setFiring(false);

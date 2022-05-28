@@ -18,6 +18,11 @@ public class GameOver extends GameState
 	private final PlayAgainButton playAgainButton;
 	private final MainmenuButton mainMenuButton;
 
+	/**
+	 * Display GameOver Screen with the width and height as the width and height of the device
+	 * Display the last score the player got
+	 * Set the state to GAMEOVER
+	 */
 	public GameOver(GameStateManager gsm) {
 		this.gsm = gsm;
 		new ScoreGUI((int) (GamePanel.getScreenWidth() / 2),
@@ -43,6 +48,10 @@ public class GameOver extends GameState
 			Data.getGameDrawable().get(i).draw(g);
 	}
 
+	/**
+	 * If playAgainbutton was pressed, start the game again with a 0 score
+	 * If mainMenuButton was pressed, go back to the main mennu
+	 */
 	@Override
 	public void mousePressed(int x, int y)
 	{

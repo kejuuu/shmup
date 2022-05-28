@@ -18,6 +18,11 @@ public class ScoreGUI extends GameObject
 	private int posX;
 	private int posY;
 
+	/**
+	 * Create a ScoreGUI to the given position to Display the players score
+	 * @param posX is the horizontal position
+	 * @param posY is the vertical position
+	 */
 	public ScoreGUI(int posX, int posY, boolean center) 
 	{
 		super(Constants.EMPTY, 99);
@@ -37,6 +42,10 @@ public class ScoreGUI extends GameObject
 
 	}
 
+	
+	/**
+	 * Update the players score to be displayed on the score GUI
+	 */
 	@Override
 	public void update()
 	{
@@ -44,6 +53,10 @@ public class ScoreGUI extends GameObject
 		this.text = "Score: " + String.valueOf(score);
 	}
 
+	
+	/**
+	 * Display the updated score to the ScoreGUI
+	 */
 	public void draw(Graphics2D g)
 	{
 		super.draw(g);

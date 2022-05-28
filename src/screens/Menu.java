@@ -18,6 +18,10 @@ public class Menu extends GameState
 	private final PlayButton playButton;
 	private final ExitButton exitButton;
 
+	/**
+	 * Display MainMenu Screen with the width and height as the width and height of the device
+	 * With a PlayButton and ExitButton
+	 */
 	public Menu(GameStateManager gsm) 
 	{
 		this.gsm = gsm;
@@ -34,6 +38,10 @@ public class Menu extends GameState
 			Data.getGameDrawable().get(i).draw(g);
 	}
 
+	/**
+	 * If playButton was pressed, then start the game
+	 * If exitButton was pressed, stop the application
+	 */
 	@Override
 	public void mousePressed(int x, int y)
 	{

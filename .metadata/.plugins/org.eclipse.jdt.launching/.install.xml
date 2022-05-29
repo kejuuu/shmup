@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dirs>
-    <entry loc="C:\Program Files\Java\jdk-11.0.11" stamp="1630756191393"/>
+<entry loc="C:\Program Files\Java\jdk-11.0.11" stamp="1630756191393"/>
+<entry loc="/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home" stamp="1645863737000"/>
+<entry loc="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home" stamp="1617845461000"/>
 </dirs>

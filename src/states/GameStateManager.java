@@ -27,8 +27,8 @@ public class GameStateManager
 
 	public void changeState(int state)
 	{
-		Data.getGameDrawable().clear();
-		Data.getGameCollidables().clear();
+		Data.gameDrawable.clear();
+		Data.gameCollidables.clear();
 
 		switch (state)
 		{

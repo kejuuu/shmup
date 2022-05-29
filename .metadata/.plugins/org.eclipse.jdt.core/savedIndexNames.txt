@@ -1,4 +1,18 @@
-INDEX VERSION 1.131+E:\Code\Java\shmup\.metadata\.plugins\org.eclipse.jdt.core
-1991655398.index
-1238233520.index
-1067094681.index
+INDEX VERSION 1.131+/Users/grady/Documents/GitHub/shmup/.metadata/.plugins/org.eclipse.jdt.core
+2931456155.index
+1175494123.index
+3063142836.index
+2084887426.index
+59196463.index
+1871588621.index
+4144302199.index
+2717153290.index
+3138466527.index
+4049792102.index
+222216354.index
+310931456.index
+2128671271.index
+1152049280.index
+3489675490.index
+1516968657.index
+2173345294.index

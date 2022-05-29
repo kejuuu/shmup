@@ -29,7 +29,7 @@ public class PlayAgainButton extends Button
 	@Override
 	public void onClick()
 	{
-		Data.setSCORE(0);
+		Data.SCORE = 0;
 		gsm.changeState(GameStateManager.LEVEL1);
 	}
 

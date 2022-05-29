@@ -36,7 +36,7 @@ public class ScoreGUI extends GameObject
 		}
 		this.posX = posX;
 		this.posY = posY;
-		this.score = Data.getSCORE();
+		this.score = Data.SCORE;
 		this.text = "Score: " + String.valueOf(score);
 		this.center = center;
 
@@ -49,7 +49,7 @@ public class ScoreGUI extends GameObject
 	@Override
 	public void update()
 	{
-		this.score = Data.getSCORE();
+		this.score = Data.SCORE;
 		this.text = "Score: " + String.valueOf(score);
 	}
 

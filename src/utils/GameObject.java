@@ -49,11 +49,11 @@ public abstract class GameObject
 
 	public void destroy(GameObject object)
 	{
-		if (Data.getGameDrawable().contains(object))
-			Data.getGameDrawable().remove(object);
+		if (Data.gameDrawable.contains(object))
+			Data.gameDrawable.remove(object);
 
-		if (Data.getGameCollidables().contains(object) && object instanceof PhysicsGameObject)
-			Data.getGameCollidables().remove(object);
+		if (Data.gameCollidables.contains(object) && object instanceof PhysicsGameObject)
+			Data.gameCollidables.remove(object);
 	}
 
 	public String getInfo()
@@ -68,10 +68,10 @@ public abstract class GameObject
 
 	public static GameObject find(String className)
 	{
-		for (int i = 0; i < Data.getGameDrawable().size(); i++)
+		for (int i = 0; i < Data.gameDrawable.size(); i++)
 		{
-			if (Data.getGameDrawable().get(i).getClass().getSimpleName().equals(className))
-				return Data.getGameDrawable().get(i);
+			if (Data.gameDrawable.get(i).getClass().getSimpleName().equals(className))
+				return Data.gameDrawable.get(i);
 		}
 		return null;
 	}

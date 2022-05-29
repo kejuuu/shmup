@@ -14,12 +14,12 @@ public abstract class PhysicsGameObject extends GameObject
 	@Override
 	public void update()
 	{
-		for (int i = 0; i < Data.getGameCollidables().size(); i++)
+		for (int i = 0; i < Data.gameCollidables.size(); i++)
 		{
-			if (Data.getGameCollidables().get(i) == this)
+			if (Data.gameCollidables.get(i) == this)
 				continue;
-			if (Collision.checkCollision(this, Data.getGameCollidables().get(i)))
-				onCollide(Data.getGameCollidables().get(i));
+			if (Collision.checkCollision(this, Data.gameCollidables.get(i)))
+				onCollide(Data.gameCollidables.get(i));
 		}
 	}
 

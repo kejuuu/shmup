@@ -56,7 +56,7 @@ public class Spawner extends GameObject
 		int y = -height;
 		EnemyShip enemy = new EnemyShip(Constants.ENEMY1, 5);
 		enemy.transform.setPosition(x, y);
-		enemy.setSpeed(rng.nextInt(Data.WAVE + 1));
+		enemy.setSpeed(rng.nextInt(Data.WAVE + 1) + 1);
 
 		spawnedEnemy++;
 		if (spawnedEnemy >= waveTreshold)

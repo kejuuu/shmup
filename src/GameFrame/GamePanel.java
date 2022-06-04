@@ -188,7 +188,6 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 
 	/**
 	 * get the current device screen width
-	 * @return the current device screen width
 	 */
 	public static int getScreenWidth()
 	{
@@ -197,7 +196,6 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 
 	/**
 	 * get the current device screen height
-	 * @return the current device screen height
 	 */
 	public static int getScreenHeight()
 	{
@@ -206,7 +204,6 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 
 	/**
 	 * get the current device screen scale
-	 * @return the current device screen scale
 	 */
 	public static int getScale()
 	{

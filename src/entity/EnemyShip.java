@@ -62,7 +62,7 @@ public class EnemyShip extends Ship implements ShootImpl
     public void update()
     {
         super.update();
-        if(transform.getPositionY() > GamePanel.getScreenHeight() + image.getHeight() * 3 / 2 * GamePanel.getHeightScaleFactor())
+        if(transform.getPositionY() > GamePanel.getScreenHeight() + image.getHeight() * 3 / 2)
             destroy(this);
         transform.setPositionY((int)(transform.getPositionY() + speed));
 

@@ -4,6 +4,8 @@ import java.awt.Graphics2D;
 import java.util.*;
 import javax.imageio.ImageIO;
 
+import GameFrame.GamePanel;
+
 import java.awt.image.*;
 import java.awt.geom.AffineTransform;
 
@@ -58,8 +60,8 @@ public class AnimatedSprite
 		AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
 
-		g.drawImage(op.filter(frames.get(currentFrame), null), transform.getPositionX() - width * 3 / 2,
-				transform.getPositionY() - height * 3 / 2, width * 3, height * 3, null);
+		g.drawImage(op.filter(frames.get(currentFrame), null), transform.getPositionX() - width * 3 / 2 * GamePanel.getScreenWidth() / 1920,
+				transform.getPositionY() - height * 3 / 2 * GamePanel.getScreenHeight() / 1080, width * 3 * GamePanel.getScreenWidth() / 1920, height * 3 * GamePanel.getScreenHeight() / 1080, null);
 	}
 
 }

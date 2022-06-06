@@ -13,7 +13,6 @@ public class ScoreGUI extends GameObject
 	private int score;
 	private String text;
 	private boolean center;
-	private boolean boost;
 
 	private int posX;
 	private int posY;

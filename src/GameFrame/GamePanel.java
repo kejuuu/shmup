@@ -18,7 +18,6 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 	private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	private static final int SCREEN_WIDTH = (int) screenSize.getWidth();
 	private static final int SCREEN_HEIGHT = (int) screenSize.getHeight();
-	private static final int SCALE = 1;
 
 	private Thread thread;
 	private boolean running;
@@ -204,13 +203,5 @@ public class GamePanel extends JPanel implements Runnable, /* KeyListener */ Mou
 		return SCREEN_HEIGHT;
 	}
 
-	/**
-	 * get the current device screen scale
-	 * @return the current device screen scale
-	 */
-	public static int getScale()
-	{
-		return SCALE;
-	}
 
 }

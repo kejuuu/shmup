@@ -39,7 +39,7 @@ public class AnimatedSprite
 		this.transform = transform;
 		width = frames.get(0).getWidth();
 		height = frames.get(0).getHeight();
-		Data.gameAnimatedSprites.add(this);
+		Data.addObject(this);
 	}
 
 	public void update()

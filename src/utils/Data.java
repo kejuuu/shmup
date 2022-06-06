@@ -28,4 +28,9 @@ public class Data
 		// sort the objects by zIndex
 		gameDrawable.sort((o1, o2) -> o1.zIndex - o2.zIndex);
 	}
+	
+	public static void addObject(AnimatedSprite object)
+	{
+		gameAnimatedSprites.add(object);
+	}
 }

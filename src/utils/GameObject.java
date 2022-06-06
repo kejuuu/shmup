@@ -41,9 +41,9 @@ public abstract class GameObject
 		AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 
-		g.drawImage(op.filter(image, null), transform.getPositionX() - width * 3 / 2 * GamePanel.getScreenWidth() / 1920,
-				transform.getPositionY() - height * 3 / 2 * GamePanel.getScreenHeight() / 1080,
-				width * 3 * GamePanel.getScreenWidth() / 1920, height * 3 * GamePanel.getScreenHeight() / 1080, null);
+		g.drawImage(op.filter(image, null), transform.getPositionX() - width * 3 / 2 * GamePanel.getWidthScaleFactor(),
+				transform.getPositionY() - height * 3 / 2 * GamePanel.getHeightScaleFactor(),
+				width * 3 * GamePanel.getWidthScaleFactor(), height * 3 * GamePanel.getHeightScaleFactor(), null);
 
 	}
 
